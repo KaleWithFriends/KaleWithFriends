@@ -13,8 +13,8 @@
 
         <h2>Ingredients</h2>
         <ul>
-          @for(ingredient <- recipe.getIngredientList){
-            <li>@ingredient.getName()</li>
+          @for(ingredient <- recipe.getTimedIngredients){
+            <li>@ingredient.getIngredient().getName()</li>
           }
         </ul>
       </div>
@@ -26,21 +26,7 @@
           @for(procedure <- recipe.getProcedure){
             <li><p>@procedure</p></li>
           }
-            <!-- Source: https://uscgwifey.wordpress.com/tag/kalua-pig/ -->
         </ol>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <h2>Reviews</h2>
-      <div class="well">
-        <p>Bob says: This recipe is awesome!</p>
-      </div>
-      <div class="well">
-        <p>Alex says: Easy to cook and tastes amazing. What's not to like?</p>
-      </div>
-      <div class="well">
-        <p>Max says: 5 stars.</p>
       </div>
     </div>
   </div>

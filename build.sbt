@@ -1,4 +1,4 @@
-name := """Kale With Friends"""
+name := """KaleWithFriends"""
 
 version := "1.0-SNAPSHOT"
 
@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "org.postgresql" % "postgresql" % "9.3-1102-jdbc4"
 )

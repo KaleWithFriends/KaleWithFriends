@@ -1,56 +1,119 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Model for a recipe.
- * <p/>
+ *
  * Created by Jack on 4/4/2015.
  */
-public class Recipe {
-  /**
-   * The recipe ID.
-   */
+@Entity
+public class Recipe extends play.db.ebean.Model {
+  /** The id. */
+  @Id
   private long id;
-  /**
-   * The name of the recipe.
-   */
+
+  /** The ingredients for this recipe. */
+  @OneToMany(mappedBy = "ingredient", cascade = CascadeType.PERSIST)
+  private ArrayList<TimedIngredient> timedIngredients;
+
+  /** The name of the recipe. */
   private String name;
-  /**
-   * A brief description of the recipe.
-   */
+  /**A brief description of the recipe. */
   private String description;
-  /**
-   * The list of ingredients.
-   */
-  private ArrayList<Ingredient> ingredientList;
-  /**
-   * The steps to make the dish.
-   */
+  /** The steps to make the dish. */
   private ArrayList<String> procedure;
-  /**
-   * The image file name.
-   */
+  /** The image file name. */
   private String imagePath = "images/kaluaPorkWithKale.jpg";
 
+  /**
+   * The EBean ORM finder method for database queries.
+   * @return The finder method.
+   */
+  public static Finder<Long, Recipe> find() {
+    return new Finder<Long, Recipe>(Long.class, Recipe.class);
+  }
 
   /**
    * Creates a recipe object.
    *
-   * @param id             The ID of the recipe.
    * @param name           The name of the recipe.
    * @param description    The description of the recipe.
-   * @param ingredientList The list of ingredients needed for the recipe.
+   * @param timedIngredients    The list of ingredients needed for the recipe.
    * @param procedure      The directions to create the recipe.
    * @param imagePath      The file name for the image. Defaults to place holder image.
    */
-  public Recipe(long id, String name, String description, ArrayList<Ingredient> ingredientList,
+  public Recipe(String name, String description, ArrayList<TimedIngredient> timedIngredients,
                 ArrayList<String> procedure, String imagePath) {
-    this.id = id;
     this.name = name;
     this.description = description;
-    this.ingredientList = ingredientList;
+    this.timedIngredients = timedIngredients;
     this.procedure = procedure;
+    this.imagePath = imagePath;
+  }
+
+  /**
+   * Gets the list of ingredients.
+   *
+   * @return the list of ingredients.
+   */
+  public ArrayList<Ingredient> getIngredients() {
+    ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+
+    for (TimedIngredient timedIngredient : getTimedIngredients()) {
+      ingredients.add(timedIngredient.getIngredient());
+    }
+
+    return ingredients;
+  }
+
+  /**
+   * Set the ingredient list.
+   *
+   * @param timedIngredients The ingredient list.
+   */
+  public void setTimedIngredients(ArrayList<TimedIngredient> timedIngredients) {
+    this.timedIngredients = timedIngredients;
+  }
+
+  /**
+   * Set the name.
+   *
+   * @param name The name.
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Set the description.
+   *
+   * @param description The description.
+   */
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  /**
+   * Set the procedure.
+   *
+   * @param procedure The list of procedures.
+   */
+  public void setProcedure(ArrayList<String> procedure) {
+    this.procedure = procedure;
+  }
+
+  /**
+   * Set the image path.
+   *
+   * @param imagePath The path to the image.
+   */
+  public void setImagePath(String imagePath) {
     this.imagePath = imagePath;
   }
 
@@ -77,8 +140,8 @@ public class Recipe {
    *
    * @return The list of ingredients.
    */
-  public ArrayList<Ingredient> getIngredientList() {
-    return ingredientList;
+  public List<TimedIngredient> getTimedIngredients() {
+    return TimedIngredient.find().where().eq("recipe", this).findList();
   }
 
   /**

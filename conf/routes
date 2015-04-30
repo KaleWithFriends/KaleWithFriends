@@ -7,7 +7,7 @@
 GET        /                        controllers.Application.index()
 GET        /profile                 controllers.Application.login()
 GET        /friendsprofile          controllers.Application.friendsProfile()
-GET        /farmersprofile          controllers.Application.farmersProfile(name: String ?= "Nalo LIFE")
+GET        /farmersprofile          controllers.Application.farmersProfile(name: String ?= "Farmer1")
 GET        /cookbook                controllers.Application.cookbook()
 GET        /recipe                  controllers.Application.recipe(id: Long ?= 0)
 GET        /local                   controllers.Application.local()

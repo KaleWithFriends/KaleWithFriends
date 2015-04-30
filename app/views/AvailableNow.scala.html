@@ -1,4 +1,4 @@
-@(farmerList: List[Farmer])
+@(farmerList: List[KaleUser])
 
 @Main("Available Now") {
 
@@ -13,10 +13,10 @@
             <th>Stock</th>
           </tr>
           @for(farmer <- farmerList) {
-            @for(ingredient <- farmer.getFreshIngredientList) {
+            @for(ingredient <- farmer.getTimedIngredients) {
               <tr>
                 <td><a href="@routes.Application.farmersProfile(farmer.getName)">@farmer.getName()</a></td>
-                <td>@ingredient.getName()</td>
+                <td>@ingredient.getIngredient().getName()</td>
                 <td>$@ingredient.getPrice() per lb.</td>
                 <td>@ingredient.getQuantity</td>
               </tr>

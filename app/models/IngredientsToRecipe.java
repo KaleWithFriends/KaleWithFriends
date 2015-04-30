@@ -17,12 +17,12 @@ public class IngredientsToRecipe {
    * @param ingredientList The list of ingredients.
    * @return Recipes the user can cook.
    */
-  public static ArrayList<Recipe> getRecipesFromIngredients(ArrayList<Ingredient> ingredientList) {
-    List<Recipe> listFromRecipeDB = RecipeDB.getRecipe();
-    ArrayList<Recipe> returnRecipeList = new ArrayList<Recipe>();
+  public static List<Recipe> getRecipesFromIngredients(List<Ingredient> ingredientList) {
+    List<Recipe> recipes = RecipeDB.getRecipes();
+    List<Recipe> returnRecipeList = new ArrayList<Recipe>();
 
-    for (Recipe recipe : listFromRecipeDB) {
-      ArrayList<Ingredient> recipeIngredientList = recipe.getIngredientList();
+    for (Recipe recipe : recipes) {
+      ArrayList<Ingredient> recipeIngredientList = recipe.getIngredients();
       boolean flag = false;
       for (Ingredient ingredient : recipeIngredientList) {
         flag = false;
@@ -35,12 +35,12 @@ public class IngredientsToRecipe {
         if (!flag) {
           break;
         }
-
       }
       if (flag) {
         returnRecipeList.add(recipe);
       }
     }
+
     return returnRecipeList;
   }
 

@@ -1,12 +1,14 @@
-import models.Consumer;
-import models.ConsumerDB;
-import models.Farmer;
-import models.FarmerDB;
+import models.UserDB;
+import models.KaleUser;
 import models.Ingredient;
+import models.IngredientDB;
 import models.IngredientDate;
+import models.TimedIngredient;
 import models.Recipe;
 import models.RecipeDB;
-import models.TimedIngredient;
+import models.Market;
+
+import models.UserType;
 import play.Application;
 import play.GlobalSettings;
 
@@ -23,6 +25,111 @@ public class Global extends GlobalSettings {
   public void onStart(Application application) {
     super.onStart(application);
 
+    /********* SET UP INGREDIENTS ***********/
+    if (IngredientDB.getIngredients().isEmpty()) {
+      IngredientDB.addIngredient(new Ingredient("Nalo Greens"));
+      IngredientDB.addIngredient(new Ingredient("Dandelion Greens"));
+      IngredientDB.addIngredient(new Ingredient("Braising Greens"));
+      IngredientDB.addIngredient(new Ingredient("Baby Kale"));
+      IngredientDB.addIngredient(new Ingredient("Baby Swiss Chard"));
+      IngredientDB.addIngredient(new Ingredient("Tat Soi"));
+      IngredientDB.addIngredient(new Ingredient("Okra"));
+      IngredientDB.addIngredient(new Ingredient("Baby Eggplant"));
+    }
+
+    /********* SET UP USER TYPES ***********/
+    if (UserDB.getUserTypes().isEmpty()) {
+      UserDB.addUserType(new UserType("Farmer"));
+      UserDB.addUserType(new UserType("Consumer"));
+    }
+
+    /********* SET UP MARKETS ***********/
+    if (UserDB.getMarkets().isEmpty()) {
+      UserDB.addMarket(new Market("Farmers Market at Windward Mall", "Neal Blaisdell Concert Hall"));
+      UserDB.addMarket(new Market("Kapiolani Community College Farmers Market", "Mililani High School"));
+      UserDB.addMarket(new Market("Kailua@Night", "Longs Kailua Parking Structure"));
+    }
+
+    /********* SET UP USERS & TIMED INGREDIENTS FOR FARMERS ***********/
+    if (UserDB.getUsers().isEmpty()) {
+      KaleUser consumer1 = new KaleUser("Consumer1", "Consumer");
+      KaleUser consumer2 = new KaleUser("Consumer2", "Consumer");
+      KaleUser farmer1 = new KaleUser("Farmer1", "Farmer");
+      KaleUser farmer2 = new KaleUser("Farmer2", "Farmer");
+
+      consumer1.setLocation("2500 Campus Road, Honolulu, HI 96822");
+      consumer2.setLocation("3071 Pualei Circle 96815");
+      farmer1.setLocation("41-574 Makakalo Street Waimanalo, HI 96795");
+      farmer1.setPictureLocation("images/farmPicture.jpg");
+      farmer2.setLocation("91-1440 Farrington Hwy, Kapolei, HI 96707");
+      farmer2.setPictureLocation("images/farmPicture.jpg");
+
+      if (farmer1.getTimedIngredients().isEmpty()) {
+        farmer1.addTimedIngredient(new TimedIngredient("Nalo Greens", 50,
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            "6.00"));
+
+        farmer1.addTimedIngredient(new TimedIngredient("Dandelion Greens", 30,
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            "5.00"));
+      }
+
+      // Give the farmers a couple items each.
+      if (farmer2.getTimedIngredients().isEmpty()) {
+        farmer2.addTimedIngredient(new TimedIngredient("Braising Greens", 50,
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            "6.00"));
+
+        farmer2.addTimedIngredient(new TimedIngredient("Baby Kale", 30,
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
+            "5.00"));
+      }
+
+      // Add a single market for each farmer.
+      if (farmer1.getMarkets().isEmpty()) {
+        farmer1.addMarket("Farmers Market at Windward Mall");
+      }
+
+      if (farmer2.getMarkets().isEmpty()) {
+        farmer2.addMarket("Kapiolani Community College Farmers Market");
+      }
+
+      // Add all the users to the data base.
+      UserDB.addUser(consumer1);
+      UserDB.addUser(consumer2);
+      UserDB.addUser(farmer1);
+      UserDB.addUser(farmer2);
+    }
+
+    /********* SET UP RECIPES ***********/
+    if (RecipeDB.getRecipes().isEmpty()) {
+      ArrayList<TimedIngredient> recipe1Ingredients = new ArrayList<>();
+      recipe1Ingredients.add(new TimedIngredient(IngredientDB.getIngredient("Nalo Greens"), 2, null, null, null));
+      recipe1Ingredients.add(new TimedIngredient(IngredientDB.getIngredient("Braising Greens"), 3, null, null, null));
+
+      ArrayList<String> proc1 = new ArrayList<>();
+      proc1.add("Mix greens in bowl.");
+      proc1.add("Eat it.");
+
+      RecipeDB.addRecipe(new Recipe("Greens Salad", "A simple green salad.", recipe1Ingredients,  proc1, "images/stirFryChoySum.jpg"));
+
+      ArrayList<TimedIngredient> recipe2Ingredients = new ArrayList<>();
+      recipe1Ingredients.add(new TimedIngredient(IngredientDB.getIngredient("Dandelion Greens"), 4, null, null, null));
+      recipe1Ingredients.add(new TimedIngredient(IngredientDB.getIngredient("Baby Kale"), 4, null, null, null));
+
+      ArrayList<String> proc2 = new ArrayList<>();
+      proc1.add("Mix kale and dandelion greens in bowl.");
+      proc1.add("Eat it. Or don't. I don't care.");
+
+      RecipeDB.addRecipe(new Recipe("Dandelion and Kale salad", "It's dandelions and kale.", recipe2Ingredients,  proc2, "images/orange.jpg"));
+    }
+
+
+/*
     ArrayList<TimedIngredient> ingredients = new ArrayList<TimedIngredient>();
     ingredients.add(new TimedIngredient("Nalo Greens", 20, IngredientDate.makeCalendar(2015, Calendar.APRIL, 5),
         IngredientDate.makeCalendar(2016, Calendar.MAY, 30), "6.00"));
@@ -253,7 +360,7 @@ public class Global extends GlobalSettings {
         mintTeaProcedure, "images/mintTea.jpg");
     RecipeDB.addRecipe(mintTea);
 
-
+*/
   }
 
 }

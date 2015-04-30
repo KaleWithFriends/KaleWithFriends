@@ -2,11 +2,10 @@ package controllers;
 
 import java.util.Map;
 
-import models.Consumer;
-import models.ConsumerDB;
-import models.Farmer;
-import models.FarmerDB;
 import models.RecipeDB;
+import models.KaleUser;
+import models.UserDB;
+
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -61,7 +60,7 @@ public class Application extends Controller {
    * @return The resulting Farmer's profile page.
    */
   public static Result farmersProfile(String name) {
-    Farmer farmer = FarmerDB.getFarmer(name);
+    KaleUser farmer = UserDB.getUser(name);
     return ok(FarmersProfile.render(farmer));
   }
 
@@ -71,7 +70,7 @@ public class Application extends Controller {
    * @return The resulting cookbook page.
    */
   public static Result cookbook() {
-    return ok(Cookbook.render(RecipeDB.getRecipe()));
+    return ok(Cookbook.render(RecipeDB.getRecipes()));
   }
 
   /**
@@ -81,7 +80,7 @@ public class Application extends Controller {
    * @return The resulting recipe page.
    */
   public static Result recipe(long id) {
-    ArrayList<models.Recipe> r = new ArrayList<>();
+    List<models.Recipe> r = new ArrayList<>();
     r.add(RecipeDB.getRecipe(id));
 
     return ok(Recipe.render(r));
@@ -95,7 +94,7 @@ public class Application extends Controller {
   public static Result local() {
     List<String> addresses = new ArrayList<>();
 
-    for (Farmer f : FarmerDB.getFarmers()) {
+    for (KaleUser f : UserDB.getUsers("Farmer")) {
       addresses.add(f.getName() + "|" + f.getLocation());
     }
 
@@ -127,10 +126,10 @@ public class Application extends Controller {
       LoginData data = formData.get();
       System.out.println("OK: " + data.name + " " + data.loginType);
       if (data.loginType.equals("Farmer")) {
-        return ok(FarmersDashboard.render(FarmerDB.getFarmer(data.name)));
+        return ok(FarmersDashboard.render(UserDB.getUser(data.name)));
       }
       else {
-        return ok(Dashboard.render(ConsumerDB.getConsumer(data.name)));
+        return ok(Dashboard.render(UserDB.getUser(data.name)));
       }
     }
   }
@@ -141,6 +140,6 @@ public class Application extends Controller {
    * @return The resulting available now page.
    */
   public static Result availableNow() {
-    return ok(AvailableNow.render(FarmerDB.getFarmers()));
+    return ok(AvailableNow.render(UserDB.getUsers("Farmer")));
   }
 }

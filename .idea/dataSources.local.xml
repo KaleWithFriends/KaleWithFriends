@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - kale_with_friends@localhost" uuid="a23db0d6-5599-4895-9d61-c14f717be09d">
+      <secret-storage>memory</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>kale_with_friends.pg_catalog kale_with_friends.public</schema-pattern>
+      <default-schemas>kale_with_friends.pg_catalog kale_with_friends.public</default-schemas>
+    </data-source>
+  </component>
+</project>

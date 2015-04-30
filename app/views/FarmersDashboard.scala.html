@@ -1,4 +1,4 @@
-@(farmer: Farmer)
+@(farmer: KaleUser)
 
 @Main("Page1") {
         <div id="homepage">
@@ -26,9 +26,9 @@
 
                             </tr>
 
-                            @for(ingredient <- farmer.getIngredientList) {
+                            @for(ingredient <- farmer.getTimedIngredients) {
                                 <tr>
-                                    <td>@ingredient.getName()</td>
+                                    <td>@ingredient.getIngredient().getName()</td>
                                     <td>$@ingredient.getPrice() per lb.</td>
                                     <td>@ingredient.getQuantity</td>
                                     }

@@ -1,4 +1,4 @@
-@(farmer: Farmer)
+@(farmer: KaleUser)
 
 @Main("Farmer's Dashboard") {
     <div class="container">
@@ -7,7 +7,9 @@
             <img src="@routes.Assets.at(farmer.getPictureLocation())" id="farmerPicture">
             <h2>@farmer.getName()</h2>
               <h4>Farm location: </h4>  @farmer.getLocation()<br><br>
-              <h4>Market locations:</h4> @farmer.getMarkets()<br><br>
+              <h4>Market locations:</h4> @for(market <- farmer.getMarkets()) {
+              @market.getMarketName()<br>
+          }<br><br>
                 <h4>Phone Number: </h4>@farmer.getPhone()<br><br>
           </div>
         </div>
@@ -22,9 +24,9 @@
 
               </tr>
 
-              @for(ingredient <- farmer.getIngredientList) {
+              @for(ingredient <- farmer.getTimedIngredients()) {
                 <tr>
-                  <td>@ingredient.getName()</td>
+                  <td>@ingredient.getIngredient().getName()</td>
                   <td>$@ingredient.getPrice() per lb.</td>
                   <td>@ingredient.getQuantity</td>
                   }

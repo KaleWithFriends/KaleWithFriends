@@ -4,40 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Recipe database to hold all the recipe.
+ * Recipe database to hold all the recipes.
  * Created by Jack on 4/4/2015.
  */
 
 
 public class RecipeDB {
-
-  /**
-   * The most recent index added to the list.
-   */
-  private static long currentId = 0;
-  /**
-   * The list that contains all the recipes.
-   */
-  public static ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-
   /**
    * Adds a recipe to the database.
    *
    * @param recipe The recipe.
    * @return The index of the item added. This should be saved for future reference.
    */
-  public static long addRecipe(Recipe recipe) {
-    recipeList.add(recipe);
-    return currentId++;
-  }
-
-  /**
-   * Gets the current id.
-   *
-   * @return The current id.
-   */
-  public static long getCurrentId() {
-    return currentId;
+  public static void addRecipe(Recipe recipe) {
+    for (TimedIngredient ti : recipe.getTimedIngredients()) {
+      ti.setRecipe(recipe);
+      ti.save();
+    }
+    recipe.save();
   }
 
   /**
@@ -47,7 +31,12 @@ public class RecipeDB {
    * @return The corresponding recipe.
    */
   public static Recipe getRecipe(long id) {
-    return recipeList.get((int) id);
+    Recipe r = Recipe.find().byId(id);
+
+    if (r == null) {
+      throw new RuntimeException();
+    }
+    return r;
   }
 
   /**
@@ -55,25 +44,27 @@ public class RecipeDB {
    *
    * @return The list of recipes.
    */
-  public static List<Recipe> getRecipe() {
-    return recipeList;
+  public static List<Recipe> getRecipes() {
+    return Recipe.find().all();
   }
 
   /**
    * Gets a list of recipes that is currently available with fresh ingredients.
+   *
    * @return The list of recipes that can be made with fresh ingredients.
    */
   public static List<Recipe> getFreshRecipeList() {
-    ArrayList<Ingredient> freshIngredients = new ArrayList<Ingredient>();
-    ArrayList<Recipe> freshRecipeList;
+    // All fresh ingredients available currently from farmers
+    List<Ingredient> freshIngredients = new ArrayList<>();
 
-    for (Farmer farmer : FarmerDB.getFarmers()) {
-      for (Ingredient ingredient : farmer.getFreshIngredientList()) {
+    // Finds the complete list of all ingredients from each farmer.
+    // Optimize by checking for duplicate entries.
+    for (KaleUser farmer : UserDB.getUsers("Farmer")) {
+      for (Ingredient ingredient : farmer.getIngredients()) {
         freshIngredients.add(ingredient);
       }
     }
 
-    freshRecipeList = IngredientsToRecipe.getRecipesFromIngredients(freshIngredients);
-    return freshRecipeList;
+    return IngredientsToRecipe.getRecipesFromIngredients(freshIngredients);
   }
 }

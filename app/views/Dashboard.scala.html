@@ -1,4 +1,4 @@
-@(consumer: Consumer)
+@(consumer: KaleUser)
 
     @Main("Page1") {
         <div id="homepage">
@@ -25,9 +25,9 @@
                             <a href="#" class="list-group-item active">
                                 My fridge
                             </a>
-                            @for(ingredient <- consumer.getIngredientList) {
+                            @for(ingredient <- consumer.getTimedIngredients) {
                                 <a href="#" class="list-group-item"><span class="badge">@ingredient.getQuantity()</span>
-                                    @ingredient.getName()</a>
+                                    @ingredient.getIngredient().getName()</a>
                             }
                         </div>
                     </div>

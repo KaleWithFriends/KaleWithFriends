@@ -1,6 +1,6 @@
 package views.loginData;
 
-import models.User;
+import models.KaleUser;
 import play.data.validation.ValidationError;
 
 import java.util.ArrayList;
@@ -30,11 +30,11 @@ public class LoginData {
   /**
    * Constructor using existing login.
    *
-   * @param user existing contact
+   * @param kaleUser existing contact
    */
-  public LoginData(User user) {
-    this.loginType = user.getType();
-    this.name = user.getName();
+  public LoginData(KaleUser kaleUser) {
+    this.loginType = kaleUser.getUserType().getUserType();
+    this.name = kaleUser.getName();
   }
 
 
