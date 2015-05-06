@@ -33,6 +33,12 @@ public class Feed extends Model {
     return new Finder<Long, Feed>(Long.class, Feed.class);
   }
 
+
+  public Feed(){
+
+  }
+
+
   /**
    * Feed that consist of time, farmer and the message.
    *

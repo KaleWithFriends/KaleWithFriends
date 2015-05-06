@@ -1,5 +1,7 @@
 package models;
 
+import views.forms.FeedDataForm;
+
 /**
  * The database for all the farmer's feeds.
  * Created by Jack on 5/5/2015.
@@ -10,9 +12,16 @@ public class FeedDB {
   /**
    * Adds a recipe to the database.
    *
-   * @param feed The feed to be added.
+   * @param feedData The feed to be added.
    */
-  public static void addProcedure(Feed feed) {
+  public static void addFeed(FeedDataForm feedData) {
+    Feed feed = new Feed();
+    feed.setEntry(feedData.entry);
+    feed.setFarmer(feedData.farmer);
+    feed.setTime(feedData.time);
+
+
+
     feed.save();
   }
 

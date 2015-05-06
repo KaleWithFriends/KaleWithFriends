@@ -404,4 +404,12 @@ public class Farmer extends Model {
   public void setFeedList(ArrayList<Feed> feedList) {
     this.feedList = feedList;
   }
+
+  public void setIngredientList(List<TimedIngredient> ingredientList) {
+    this.ingredientList = ingredientList;
+  }
+
+  public void setFeedList(List<Feed> feedList) {
+    this.feedList = feedList;
+  }
 }

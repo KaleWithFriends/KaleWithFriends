@@ -1,0 +1,24 @@
+@(feedForm: Form[views.forms.FeedDataForm])
+
+@import bootstrap3._
+@import helper._
+
+@Main("New Feed") {
+  <div class="container">
+  @form(routes.Application.postFeed(), 'class -> "form-horizontal") {
+    <input type = "hidden"
+    name = "@feedForm("id").name"
+    id = "@feedForm("id").id"
+    value = "@feedForm("id").value" >
+
+
+    @text(feedForm("entry"),
+      label = "Entry",
+      placeholder = "Entry",
+      help = "")
+
+
+    <button id="submit" type="submit" class="btn btn-default">Submit</button>
+  }
+  </div>
+}

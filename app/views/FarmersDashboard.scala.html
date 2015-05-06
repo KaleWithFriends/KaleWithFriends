@@ -1,83 +1,82 @@
 @(farmer: Farmer)
 
-@Main("Page1") {
-        <div id="homepage">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="well">
-                        <img src="@routes.Assets.at(farmer.getPictureLocation())" id="farmerPicture">
-                        <h2>@farmer.getName()</h2>
-                        <h4>Farm location: </h4>  @farmer.getLocation()<br><br>
-                        <h4>Market locations:</h4> @farmer.getMarkets()<br><br>
-                        <h4>Phone Number: </h4>@farmer.getPhone()<br><br>
-                        <p><a href="#">Edit Profile</a></p>
-                    </div>
-
-                    <div class="well">
-                        <h2>Inventory</h2>
-                        <table class="table table-striped table-bordered">
-                            <tr>
-                                <th></th>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-
-                                @if(farmer.getIngredientList != null) {
-                            @for(ingredient <- farmer.getIngredientList) {
-                                <tr>
-                                    <td><a href="@routes.Application.deleteIngredient(farmer.getName(), ingredient.getId())">
-                                        <i class="fa fa-times"></i></a></td>
-                                    <td>@ingredient.getName()</td>
-                                    <td>$@ingredient.getPrice() per lb.</td>
-                                    <td>@ingredient.getQuantity</td>
-                                    <td><table><tr><td><a href="@routes.Application.addOne(farmer.getName(), ingredient.getId())"><i class="fa fa-plus"></i></a></td></tr>
-                                        <tr><td><a href="@routes.Application.subOne(farmer.getName(), ingredient.getId())"><i class="fa fa-minus"></i></a></td></tr></table></td>
-                                    <td><a href="#">Edit</a></td>
-                                    }
-                        </tr>
-                        </table>
-
-                        } else {
-                        </tr>
-                        </table> No stock available
-
-                    }
-                        <a href="#"><i class="fa fa-plus"></i> Add new stock item</a>
-                    </div>
-                </div>
-
-                <div class="col-sm-8">
-                    <div class="well">
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="@routes.Assets.at("images/farmPicture.jpg")">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nalo LIFE</h4>
-                                We just ran out of kale. But we still have lots of other fresh vegetables waiting
-                                to be bought! Come see us at the Windward Mall Farmers market!
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="@routes.Assets.at("images/farmPicture.jpg")">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Aloun Farms</h4>
-                                Our hard-working farmers just finished picking some fresh kale! Come see us on
-                                Saturday morning at KCC for your weekly dose of kale!
-                            </div></div>
-                    </div>
-                </div>
-            </div>
+@Main("Dashboard") {
+  <div id="homepage">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <img src="@routes.Assets.at(farmer.getPictureLocation())" id="farmerPicture">
+          <h2>@farmer.getName()</h2>
+          <h4>Farm location: </h4>  @farmer.getLocation()<br><br>
+          <h4>Market locations:</h4> @farmer.getMarkets()<br><br>
+          <h4>Phone Number: </h4>@farmer.getPhone()<br><br>
+          <p><a href="#">Edit Profile</a></p>
         </div>
 
+        <div class="well">
+          <h2>Inventory</h2>
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th></th>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th></th>
+              <th></th>
+            </tr>
 
-    }
+            @if(farmer.getIngredientList != null) {
+              @for(ingredient <- farmer.getIngredientList) {
+                <tr>
+                  <td><a href="@routes.Application.deleteIngredient(farmer.getName(), ingredient.getId())">
+                    <i class="fa fa-times"></i></a>
+                  </td>
+                  <td>@ingredient.getName()</td>
+                  <td>$@ingredient.getPrice() per lb.</td>
+                  <td>@ingredient.getQuantity</td>
+                  <td><table><tr><td><a href="@routes.Application.addOne(farmer.getName(), ingredient.getId())"><i class="fa fa-plus"></i></a></td></tr>
+                    <tr><td><a href="@routes.Application.subOne(farmer.getName(), ingredient.getId())"><i class="fa fa-minus"></i></a></td></tr></table>
+                  </td>
+                  <td><a href="#">Edit</a></td>
+                  }
+            </tr>
+            </table>
+
+          } else {
+          </tr>
+          </table> No stock available
+
+        }
+          <a href="#"><i class="fa fa-plus"></i> Add new stock item</a>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="well">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" src="@routes.Assets.at("images/farmPicture.jpg")">
+              </a>
+            </div>
+            <div class="media-body">
+             @for(feed <- farmer.getFeedList){
+               <p>@feed.getEntry</p>
+             }
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="col-sm-1">
+        <a href="@routes.Application.newFeed()" class="btn btn-primary btn-lg" role="button">New Entry</a>
+
+      </div>
+    </div>
+  </div>
+
+
+}

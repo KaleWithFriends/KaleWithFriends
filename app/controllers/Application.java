@@ -2,10 +2,12 @@ package controllers;
 
 import models.Farmer;
 import models.FarmerDB;
+import models.FeedDB;
 import models.RecipeDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.forms.FeedDataForm;
 import views.html.AvailableNow;
 import views.html.Cookbook;
 import views.html.FarmersDashboard;
@@ -13,6 +15,7 @@ import views.html.FarmersProfile;
 import views.html.Index;
 import views.html.Local;
 import views.html.MealPlanner;
+import views.html.NewFeed;
 import views.html.Recipe;
 import views.html.SignUp;
 import views.loginData.LoginData;
@@ -214,5 +217,32 @@ public class Application extends Controller {
   public static Result subOne(String farmer, long ingredient) {
     Farmer.subtractOneToIngredient(farmer, ingredient);
     return ok(FarmersDashboard.render(Farmer.findFarmer(farmer)));
+  }
+
+
+  public static Result newFeed(){
+    FeedDataForm data = new FeedDataForm();
+    Form<FeedDataForm> formData = Form.form(FeedDataForm.class).fill(data);
+    return ok(NewFeed.render(formData));
+  }
+
+
+  /**
+   * Processes form fields from new feed page.
+   *
+   * @return The NewFeed.
+   */
+  public static Result postFeed() {
+    System.out.println("In post Feed.");
+    Form<FeedDataForm> formData = Form.form(FeedDataForm.class).bindFromRequest();
+    if (formData.hasErrors()) {
+      System.out.println("Form has errors.");
+      return badRequest(NewFeed.render(formData));
+    }
+    else {
+      FeedDataForm data = formData.get();
+      FeedDB.addFeed(data);
+      return ok(NewFeed.render(formData));
+    }
   }
 }
