@@ -74,40 +74,36 @@ create sequence recipe_seq;
 
 create sequence timed_ingredient_seq;
 
-alter table feed add constraint fk_feed_farmer_1 foreign key (farmer_id) references farmer (id) on delete restrict on update restrict;
+alter table feed add constraint fk_feed_farmer_1 foreign key (farmer_id) references farmer (id);
 create index ix_feed_farmer_1 on feed (farmer_id);
-alter table procedure add constraint fk_procedure_recipe_2 foreign key (recipe_id) references recipe (id) on delete restrict on update restrict;
+alter table procedure add constraint fk_procedure_recipe_2 foreign key (recipe_id) references recipe (id);
 create index ix_procedure_recipe_2 on procedure (recipe_id);
-alter table timed_ingredient add constraint fk_timed_ingredient_farmer_3 foreign key (farmer_id) references farmer (id) on delete restrict on update restrict;
+alter table timed_ingredient add constraint fk_timed_ingredient_farmer_3 foreign key (farmer_id) references farmer (id);
 create index ix_timed_ingredient_farmer_3 on timed_ingredient (farmer_id);
-alter table timed_ingredient add constraint fk_timed_ingredient_recipe_4 foreign key (recipe_id) references recipe (id) on delete restrict on update restrict;
+alter table timed_ingredient add constraint fk_timed_ingredient_recipe_4 foreign key (recipe_id) references recipe (id);
 create index ix_timed_ingredient_recipe_4 on timed_ingredient (recipe_id);
 
 
 
-alter table farmer_market add constraint fk_farmer_market_farmer_01 foreign key (farmer_id) references farmer (id) on delete restrict on update restrict;
+alter table farmer_market add constraint fk_farmer_market_farmer_01 foreign key (farmer_id) references farmer (id);
 
-alter table farmer_market add constraint fk_farmer_market_market_02 foreign key (market_id) references market (id) on delete restrict on update restrict;
+alter table farmer_market add constraint fk_farmer_market_market_02 foreign key (market_id) references market (id);
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists farmer cascade;
 
-drop table if exists farmer;
+drop table if exists farmer_market cascade;
 
-drop table if exists farmer_market;
+drop table if exists feed cascade;
 
-drop table if exists feed;
+drop table if exists market cascade;
 
-drop table if exists market;
+drop table if exists procedure cascade;
 
-drop table if exists procedure;
+drop table if exists recipe cascade;
 
-drop table if exists recipe;
-
-drop table if exists timed_ingredient;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists timed_ingredient cascade;
 
 drop sequence if exists farmer_seq;
 
