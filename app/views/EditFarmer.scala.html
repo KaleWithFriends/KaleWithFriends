@@ -1,4 +1,4 @@
-@(farmerForm: Form[views.forms.EditFarmerData], isLoggedIn: Boolean, farmer: Farmer)
+@(farmerForm: Form[views.forms.EditFarmerData], isLoggedIn: Boolean, farmer: Farmer, marketMap: Map[Market, Boolean])
 
 @import bootstrap3._
 @import helper._
@@ -27,10 +27,12 @@
       placeholder = "Location",
       help = "")
 
-      @text(farmerForm("markets"),
-          label = "Markets",
-          placeholder = "Markets",
-          help = "")
+
+    @checkboxesMarket(farmerForm("dietTypes"),
+      label="Market Location",
+      checkboxMap = marketMap)
+
+
       @text(farmerForm("phone"),
           label = "Phone Number",
           placeholder = "Phone",

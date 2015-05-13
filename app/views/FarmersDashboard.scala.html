@@ -10,7 +10,12 @@
             <div class = "farmer_image"><img src="@routes.Assets.at(farmer.getPictureLocation())" id="farmerPicture"></div>
             <h2><div class="recipe_header">@farmer.getName()</div></h2>
             <h4>Farm location: </h4>  @farmer.getLocation()<br><br>
-            <h4>Market locations:</h4> @farmer.getMarkets()<br><br>
+            <h4>Market locations:</h4>
+            <ul>
+              @for(market <- farmer.getMarkets()){
+                <li>@market.getMarketName</li>
+              }
+            </ul>
             <h4>Phone Number: </h4>@farmer.getPhone()<br><br>
             <p><a href="@routes.Application.editFarmer(farmer.getName())">Edit Profile</a></p>
           </div>
