@@ -14,6 +14,7 @@ import play.mvc.Security;
 import views.forms.EditFarmerData;
 import views.forms.FeedData;
 import views.forms.IngredientFormData;
+import views.forms.MarketData;
 import views.html.AvailableNow;
 import views.html.Cookbook;
 import views.html.EditFarmer;
@@ -31,6 +32,7 @@ import views.loginData.SignUpForm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Provides controllers for this application.
@@ -222,14 +224,15 @@ public class Application extends Controller {
     Farmer f = Farmer.findFarmer(farmer);
     EditFarmerData data = new EditFarmerData(f);
     Form<EditFarmerData> formData = Form.form(EditFarmerData.class).fill(data);
-    return ok(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx())));
+    Map<Market, Boolean> dietTypeMap = MarketData.getMarkets(data.getMarkets());
+    return ok(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx()), dietTypeMap));
    }
 
   public static Result postEditFarmer(String farmer) {
     Form<EditFarmerData> formData = Form.form(EditFarmerData.class).bindFromRequest();
     if (formData.hasErrors()) {
       System.out.println("Errors found.");
-      return badRequest(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx())));
+      return badRequest(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx()), MarketData.getMarkets()));
     }
     EditFarmerData data = formData.get();
     session("username", data.getName());
