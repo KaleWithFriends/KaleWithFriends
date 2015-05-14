@@ -187,6 +187,9 @@ public class Global extends GlobalSettings {
       m.add(mk1);
       m.add(mk2);
       m.add(mk3);
+      m.add(mk18);
+      m.add(mk19);
+
 
       Farmer farmer = new Farmer("Nalo LIFE", "41-574 Makakalo Street Waimanalo, HI 96795",
           m,
@@ -274,13 +277,129 @@ public class Global extends GlobalSettings {
 
       // Make list of markets for farmer
       List<Market> m2 = new ArrayList<>();
-      m.add(mk2);
+      m2.add(mk2);
+      m2.add(mk10);
+      m2.add(mk20);
+      m2.add(mk21);
+      m2.add(mk15);
+      m2.add(mk11);
+
 
       Farmer farmer2 = new Farmer("Aloun Farms", "91-1440 Farrington Hwy, Kapolei, HI 96707",
-          m, "808-677-9516", "images/farmPicture.jpg", ingredients2, "password");
+          m2, "808-677-9516", "images/farmPicture.jpg", ingredients2, "password");
       FarmerDB.addFarmer(farmer2);
 
-      m.clear();
+      m2.clear();
+
+      ArrayList<TimedIngredient> ingredients3 = new ArrayList<TimedIngredient>();
+      ingredients3.add(new TimedIngredient("Green Onions", 21, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.50", "images/ingredient/green_onions.jpg"));
+      ingredients3.add(new TimedIngredient("Pak Choy", 14, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/pak_choy.jpg"));
+      ingredients3.add(new TimedIngredient("Choy Sum", 14, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/choy_sum.jpg"));
+      ingredients3.add(new TimedIngredient("Kai Choy", 13, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/kai_choy.jpg"));
+      ingredients3.add(new TimedIngredient("Daikon", 17, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "1.50", "images/ingredient/daikon.jpg"));
+      ingredients3.add(new TimedIngredient("Radish", 9, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "1.50", "images/ingredient/radish.jpg"));
+      ingredients3.add(new TimedIngredient("Zucchini", 12, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/zucchini.jpg"));
+      ingredients3.add(new TimedIngredient("Won Bok (Chinese Cabbage)", 12,
+          TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/won_bok.jpg"));
+
+      // Make list of markets for farmer
+      List<Market> m3 = new ArrayList<>();
+      m3.add(mk2);
+      m3.add(mk4);
+      m3.add(mk5);
+      m3.add(mk6);
+      m3.add(mk7);
+      m3.add(mk8);
+
+
+      Farmer farmer3 = new Farmer("HSN Farm LLC", "Mililani, Oahu, Hawaii 96789",
+          m3, "", "images/farmPicture.jpg", ingredients3, "password");
+      FarmerDB.addFarmer(farmer3);
+
+      m3.clear();
+
+      ArrayList<TimedIngredient> ingredients4 = new ArrayList<TimedIngredient>();
+      ingredients4.add(new TimedIngredient("Head Cabbage", 10, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.50", "images/ingredient/head_cabbage.jpg"));
+      ingredients4.add(new TimedIngredient("Cantaloupe", 20, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "1.00", "images/ingredient/cantaloupe.jpg"));
+      ingredients4.add(new TimedIngredient("Honeydew", 21, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.50", "images/ingredient/honeydew.jpg"));
+      ingredients4.add(new TimedIngredient("Sunburst", 25, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "3.00", "images/ingredient/cantaloupe.jpg"));
+      ingredients4.add(new TimedIngredient("Ewa Sweet Onion", 14, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.50", "images/ingredient/ewa_sweet_onion.jpg"));
+      ingredients4.add(new TimedIngredient("Broccoli", 19, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/broccoli.jpg"));
+      ingredients4.add(new TimedIngredient("Sweet Corn", 20, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/sweet_corn.jpg"));
+      ingredients4.add(new TimedIngredient("Halloween Pumpkin", 0, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.50", "images/ingredient/pumpkin.jpg"));
+      ingredients4.add(new TimedIngredient("Kabocha Squash", 2, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "3.00", "images/ingredient/kabocha_squash.jpg"));
+      ingredients4.add(new TimedIngredient("Thai Watermelon", 7, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "0.25", "images/ingredient/thai_watermelon.jpg"));
+
+      // Make list of markets for farmer
+      List<Market> m4 = new ArrayList<>();
+      m4.add(mk9);
+      m4.add(mk12);
+      m4.add(mk13);
+      m4.add(mk16);
+      m4.add(mk14);
+      m4.add(mk17);
+
+
+      Farmer farmer4 = new Farmer("Frankie's Nursery", "41-999 Mahiku Pl, Waimanalo, HI 96795",
+          m4, "(808)259-8737", "images/farmPicture.jpg", ingredients4, "password");
+      FarmerDB.addFarmer(farmer4);
+
+      m4.clear();
+
+      ArrayList<TimedIngredient> ingredients5 = new ArrayList<TimedIngredient>();
+      ingredients5.add(new TimedIngredient("Dandelion Greens", 15, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "6.00", "images/ingredient/dandelion_greens.jpg"));
+      ingredients5.add(new TimedIngredient("Braising Greens", 13, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "6.00", "images/ingredient/braising_greens.jpg"));
+      ingredients5.add(new TimedIngredient("Baby Kale", 21, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/baby_kale.jpg"));
+      ingredients5.add(new TimedIngredient("Baby Swiss Chard", 9, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/baby_swiss_chard.png"));
+      ingredients5.add(new TimedIngredient("Tat Soi", 7, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/tat_soi.jpg"));
+      ingredients5.add(new TimedIngredient("Purslane", 5, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/purslane.jpg"));
+      ingredients5.add(new TimedIngredient("Okra", 5, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.50", "images/ingredient/okra.jpg"));
+      ingredients5.add(new TimedIngredient("Baby Eggplant", 7, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.00", "images/ingredient/baby_eggplant.jpg"));
+      ingredients5.add(new TimedIngredient("Sweet Basil", 9, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.25", "images/ingredient/sweet_basil.jpg"));
+      ingredients5.add(new TimedIngredient("Italian Parsley", 5, TimeStamp.makeCalendar(2015, Calendar.APRIL, 5),
+          TimeStamp.makeCalendar(2016, Calendar.MAY, 30), "2.75", "images/ingredient/italian_parsley.jpg"));
+
+      // Make list of markets for farmer
+      List<Market> m5 = new ArrayList<>();
+      m5.add(mk7);
+      m5.add(mk12);
+      m5.add(mk13);
+      m5.add(mk6);
+      m5.add(mk8);
+
+
+      Farmer farmer5 = new Farmer("Pit Farms", "Wahiawa, Oahu, Hawaii 96786",
+          m5, "", "images/farmPicture.jpg", ingredients5, "password");
+      FarmerDB.addFarmer(farmer5);
+
+      m5.clear();
     }
 
 
@@ -355,6 +474,74 @@ public class Global extends GlobalSettings {
           "A simple tea created with mint leaves.", mintTeaIngredients,
           mintTeaProcedure, "images/mintTea.jpg");
       RecipeDB.addRecipe(mintTea);
+
+      ArrayList<TimedIngredient>blueberryIngredients= new ArrayList<TimedIngredient>();
+      blueberryIngredients.add(new TimedIngredient("Blueberry", 2));
+      blueberryIngredients.add(new TimedIngredient("Strawberry", 2));
+      blueberryIngredients.add(new TimedIngredient("Greek Yogurt", 1));
+      blueberryIngredients.add(new TimedIngredient("Honey", 1));
+
+      List<Procedure> blueberryProcedure = new ArrayList<>();
+      blueberryProcedure.add(new Procedure("Rinse blueberries and strawberries."));
+      blueberryProcedure.add(new Procedure("Put all ingredients into a blender. Ice is optional"));
+      blueberryProcedure.add(new Procedure("Blend for 10 seconds or until smooth."));
+      blueberryProcedure.add(new Procedure("Add sugar to taste and serve."));
+      Recipe blueberry = new Recipe("Blueberry Smoothie",
+          "A delicious refreshing fruit smoothie.", blueberryIngredients,
+          blueberryProcedure, "images/blueberry.jpg");
+      RecipeDB.addRecipe(blueberry);
+
+
+      ArrayList<TimedIngredient>strawIngredients= new ArrayList<TimedIngredient>();
+      strawIngredients.add(new TimedIngredient("Banana", 2));
+      strawIngredients.add(new TimedIngredient("Strawberry", 2));
+      strawIngredients.add(new TimedIngredient("Greek Yogurt", 1));
+      strawIngredients.add(new TimedIngredient("Honey", 1));
+
+      List<Procedure> strawProcedure = new ArrayList<>();
+      strawProcedure.add(new Procedure("Peel bananas and rinse strawberries."));
+      strawProcedure.add(new Procedure("Put all ingredients into a blender. Ice is optional"));
+      strawProcedure.add(new Procedure("Blend for 10 seconds or until smooth."));
+      strawProcedure.add(new Procedure("Add sugar to taste and serve."));
+      Recipe straw = new Recipe("Strawberry Banana Smoothie",
+          "A delicious refreshing blend of bananas and strawberries.", strawIngredients,
+          blueberryProcedure, "images/straw.jpg");
+      RecipeDB.addRecipe(straw);
+
+
+      ArrayList<TimedIngredient>pineIngredients= new ArrayList<TimedIngredient>();
+      pineIngredients.add(new TimedIngredient("Blueberry", 2));
+      pineIngredients.add(new TimedIngredient("Pineapple", 1));
+      pineIngredients.add(new TimedIngredient("Strawberry", 2));
+      pineIngredients.add(new TimedIngredient("Greek Yogurt", 1));
+      pineIngredients.add(new TimedIngredient("Honey", 1));
+
+      List<Procedure> pineProcedure = new ArrayList<>();
+      pineProcedure.add(new Procedure("Peel pineapple and rinse strawberries."));
+      pineProcedure.add(new Procedure("Put all ingredients into a blender. Ice is optional"));
+      pineProcedure.add(new Procedure("Blend for 10 seconds or until smooth."));
+      pineProcedure.add(new Procedure("Add sugar to taste and serve."));
+      Recipe pine = new Recipe("Pineapple Smoothie",
+          "A delicious refreshing blend of local fruit flavors.", pineIngredients,
+          pineProcedure, "images/pine.jpg");
+      RecipeDB.addRecipe(pine);
+
+      Feed feed = new Feed("We have a new crop of kale! Come see us at our farmers markets before we run out!", FarmerDB.getFarmer("Aloun Farms"));
+
+      Feed feed2 = new Feed("Tomatoes are discounted this week at 50% off!", FarmerDB.getFarmer("Nalo LIFE"));
+
+      Feed feed3 = new Feed("Hope you are all having a great week! Unfortunately we will not make it the Mililani farmers market this week due to personal issues.", FarmerDB.getFarmer("HSN Farms LLC"));
+
+      Feed feed4 = new Feed("Come by and get your fruits! We are running out fast.", FarmerDB.getFarmer("Pit Farms"));
+
+      Feed feed5 = new Feed("We are now out of kale.", FarmerDB.getFarmer("Frankie's Nursery"));
+
+      FeedDB.addProcedure(feed);
+      FeedDB.addProcedure(feed2);
+      FeedDB.addProcedure(feed3);
+      FeedDB.addProcedure(feed4);
+      FeedDB.addProcedure(feed5);
+
     }
 
   }

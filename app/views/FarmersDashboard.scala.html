@@ -1,8 +1,7 @@
 @(contactForm: Form[views.forms.FeedData], farmer: Farmer, isLoggedIn: Boolean)
 
   @import views.html.helper._
-=======
-@import views.html.helper._
+
 
   @Main("Dashboard", isLoggedIn, farmer) {
     <div id="homepage">
@@ -10,7 +9,7 @@
         <div class="col-sm-6">
           <div class="well">
             <div class = "farmer_image"><img src="@routes.Assets.at(farmer.getPictureLocation())" id="farmerPicture"></div>
-            <h2><div class="recipe_header">@farmer.getName()</div></h2>
+            <h2><div class="recipe_header"><i class="fa fa-leaf"></i> @farmer.getName()</div></h2>
             <h4>Farm location: </h4>  @farmer.getLocation()<br><br>
             <h4>Market locations:</h4>
             <ul>

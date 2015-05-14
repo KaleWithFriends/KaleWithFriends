@@ -29,7 +29,7 @@ h5 {
   text-align: center;
 }
 
-li {
+.li-unorder {
   list-style-type: none;
 }
 
