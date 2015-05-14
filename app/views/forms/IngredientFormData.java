@@ -14,59 +14,99 @@ import java.util.List;
  */
 public class IngredientFormData {
 
-    public Farmer farmer;
+  /**
+   * The farmer.
+   */
+  public Farmer farmer;
 
-    public String price;
+  /**
+   * The price.
+   */
+  public String price;
 
-    public String image;
+  /**
+   * The image.
+   */
+  public String image;
 
-    public String name;
+  /**
+   * The name.
+   */
+  public String name;
 
-    public String quantity;
+  /**
+   * The quantity.
+   */
+  public String quantity;
 
+  /**
+   * The expiration month.
+   */
   public int expMonth;
+
+  /**
+   * The expiration day.
+   */
   public int expDay;
+
+  /**
+   * The expiration year.
+   */
   public int expYear;
 
 
-    public Calendar startDate;
-    public Calendar endDate;
+  /**
+   * The start date.
+   */
+  public Calendar startDate;
 
-    public long id;
+  /**
+   * The end date.
+   */
+  public Calendar endDate;
+
+  /**
+   * The id.
+   */
+  public long id;
 
 
-    /**
-     * Public no arg constructor for Play.
-     */
-    public IngredientFormData() {
-      //no arg constructor
-    }
+  /**
+   * Public no arg constructor for Play.
+   */
+  public IngredientFormData() {
+    //no arg constructor
+  }
 
-    /**
-     * Creates a ingredient given a ingredient.
-     *
-     * @param ingredient The ingredient.
-     */
-    public IngredientFormData(TimedIngredient ingredient) {
-      this.price = ingredient.getPrice();
-      this.endDate = ingredient.getEndDate();
-      this.startDate = ingredient.getStartDate();
-      this.id = ingredient.getId();
-      this.quantity = Integer.toString(ingredient.getQuantity());
-      this.image = ingredient.getImage();
-      this.name = ingredient.getName();
-    }
+  /**
+   * Creates a ingredient given a ingredient.
+   *
+   * @param ingredient The ingredient.
+   */
+  public IngredientFormData(TimedIngredient ingredient) {
+    this.price = ingredient.getPrice();
+    this.endDate = ingredient.getEndDate();
+    this.startDate = ingredient.getStartDate();
+    this.id = ingredient.getId();
+    this.quantity = Integer.toString(ingredient.getQuantity());
+    this.image = ingredient.getImage();
+    this.name = ingredient.getName();
+  }
 
 
   /**
    * Creates a model of a ingredient without the id. Method used for testing purposes.
    *
-   * @param name
-   * @param price
-   * @param quantity
-   * @param image
+   * @param name the name
+   * @param price the price
+   * @param quantity the quantity
+   * @param image the image
+   * @param expMonth the expMonth
+   * @param expDay the expDay
+   * @param expYear the expYear
    */
-  public IngredientFormData(String name, String price, String quantity, String image, int expMonth, int expDay, int expYear) {
+  public IngredientFormData(String name, String price, String quantity, String image,
+                            int expMonth, int expDay, int expYear) {
     this.name = name;
     this.price = price;
     this.quantity = quantity;
@@ -77,28 +117,31 @@ public class IngredientFormData {
 
   }
 
-    /**
-     * Creates a model of a ingredient without the id. Method used for testing purposes.
-     *
-     * @param name
-     * @param price
-     * @param quantity
-     * @param image
-     * @param startDate
-     */
-    public IngredientFormData(String name, String price, String quantity, String image, Calendar startDate, Calendar endDate) {
-      this.name = name;
-      this.price = price;
-      this.quantity = quantity;
-      this.image = image;
-      this.startDate = startDate;
-      this.endDate = endDate;
+  /**
+   * Creates a model of a ingredient without the id. Method used for testing purposes.
+   *
+   * @param name the name
+   * @param price the price
+   * @param quantity the quantity
+   * @param image the image
+   * @param startDate the startDate
+   * @param endDate the endDate
+   */
+  public IngredientFormData(String name, String price, String quantity,
+                            String image, Calendar startDate, Calendar endDate) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+    this.image = image;
+    this.startDate = startDate;
+    this.endDate = endDate;
 
-    }
+  }
 
 
   /**
    * Checks if a string is a number.
+   *
    * @param s the string to check
    * @return true or false if number or not
    */
@@ -107,34 +150,34 @@ public class IngredientFormData {
   }
 
   /**
-     * Validates the form's fields.
-     *
-     * @return null if valid, list of errors if there are any.
-     */
-    public List<ValidationError> validate() {
-      List<ValidationError> errors = new ArrayList<>();
+   * Validates the form's fields.
+   *
+   * @return null if valid, list of errors if there are any.
+   */
+  public List<ValidationError> validate() {
+    List<ValidationError> errors = new ArrayList<>();
 
-      if (name == null || name.length() == 0) {
-        errors.add(new ValidationError("name", "Name is required."));
-      }
-
-
-      if (price == null || price.length() == 0) {
-        errors.add(new ValidationError("price", "Price is required."));
-      }
-
-      if (!isNumeric(price)) {
-        errors.add(new ValidationError("price", "Price must contain only numbers or decimals."));
-      }
-
-      if (quantity == null || quantity.length() == 0 || !isNumeric(quantity)) {
-        errors.add(new ValidationError("quantity", "Quantity is required."));
-      }
-
-      if (!isNumeric(quantity)) {
-        errors.add(new ValidationError("price", "Quantity must contain only numbers or decimals."));
-      }
-
-      return errors.isEmpty() ? null : errors;
+    if (name == null || name.length() == 0) {
+      errors.add(new ValidationError("name", "Name is required."));
     }
+
+
+    if (price == null || price.length() == 0) {
+      errors.add(new ValidationError("price", "Price is required."));
+    }
+
+    if (!isNumeric(price)) {
+      errors.add(new ValidationError("price", "Price must contain only numbers or decimals."));
+    }
+
+    if (quantity == null || quantity.length() == 0 || !isNumeric(quantity)) {
+      errors.add(new ValidationError("quantity", "Quantity is required."));
+    }
+
+    if (!isNumeric(quantity)) {
+      errors.add(new ValidationError("price", "Quantity must contain only numbers or decimals."));
+    }
+
+    return errors.isEmpty() ? null : errors;
+  }
 }

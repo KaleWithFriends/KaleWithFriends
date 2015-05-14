@@ -160,7 +160,7 @@ public class Farmer extends Model {
      * Gets Farmer password.
      * @return the password
      */
-    public String getPassword () {
+    public String getPassword() {
       return password;
     }
 
@@ -169,7 +169,7 @@ public class Farmer extends Model {
      * Sets the user password.
      * @param password the password
      */
-    public void setPassword (String password){
+    public void setPassword(String password) {
       this.password = password;
     }
 

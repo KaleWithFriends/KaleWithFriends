@@ -34,7 +34,12 @@ public class LoginPage extends FluentPage {
   }
 
 
-  public void inputData(String name, String password){
+  /**
+   * The input data.
+   * @param name the name
+   * @param password the password
+   */
+  public void inputData(String name, String password) {
     fill("#name").with(name);
     fill("#password").with(password);
     submit("#submit");

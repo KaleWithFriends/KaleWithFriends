@@ -56,11 +56,13 @@ public class MarketDB {
 
     /**
      * Returns a list of markets given a region of Oahu. All markets if region is empty.
-     * @param region
+     * @param region the region
      * @return The markets in the region.
      */
     public static List<Market> getMarketsByRegion(String region) {
-        if (region.isEmpty()) { return getMarkets(); }
+        if (region.isEmpty()) {
+          return getMarkets();
+        }
 
         // Get a list of regions
         List<String> zipCodes = RegionDB.getZipCodesFromRegion(region);

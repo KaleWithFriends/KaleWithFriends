@@ -16,7 +16,7 @@ public class Market extends play.db.ebean.Model {
   @Id
   private long id;
 
-  /** The list of contacts associated with this type */
+  /** The list of contacts associated with this type. */
   @ManyToMany(mappedBy = "markets", cascade = CascadeType.PERSIST)
   private List<Farmer> farmers;
 
@@ -31,6 +31,8 @@ public class Market extends play.db.ebean.Model {
   /**
    * Default constructor.
    *
+   * @param location the location of market.
+   * @param time the time of the market.
    * @param marketName Name of the market.
    */
   public Market(String marketName, String location, String time) {

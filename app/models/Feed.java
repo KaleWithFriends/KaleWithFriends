@@ -133,13 +133,18 @@ public class Feed extends Model {
     this.id = id;
   }
 
+  /**
+   * Prints the data.
+   * @return The data to print in string format
+   */
   public String printDate() {
     Calendar cal = time;
     SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
     String formatted = format1.format(cal.getTime());
     if (formatted != null) {
       return formatted;
-    } else {
+    }
+    else {
       return null;
     }
   }

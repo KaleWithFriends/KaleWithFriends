@@ -25,6 +25,9 @@ public class SignUpForm {
    */
   public String location;
 
+  /**
+   * The password field.
+   */
   public String password;
 
   /**

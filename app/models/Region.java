@@ -13,11 +13,11 @@ public class Region extends Model {
     /** The id. */
     @Id
     private long id;
-    /** The name of the location */
+    /** The name of the location. */
     private String areaName;
-    /** The zip code for the region */
+    /** The zip code for the region. */
     private String zipCode;
-    /** Comma separated list of regions */
+    /** Comma separated list of regions. */
     private String regions;
 
     /**

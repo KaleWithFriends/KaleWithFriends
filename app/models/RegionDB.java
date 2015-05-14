@@ -7,7 +7,10 @@ import java.util.List;
  * Database control for regions.
  */
 public class RegionDB {
-
+  /**
+   * To add the region.
+   * @param region the region.
+   */
     public static void addRegion(Region region) {
         region.save();
     }
@@ -23,7 +26,7 @@ public class RegionDB {
     /**
      * Find a list of regions.
      * @param region The region string.
-     * @return
+     * @return the list of regions
      */
     public static List<String> getZipCodesFromRegion(String region) {
         List<Region> regions = Region.find().where().contains("regions", region).findList();

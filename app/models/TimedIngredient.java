@@ -275,26 +275,34 @@ public class TimedIngredient extends Model implements Comparable<TimedIngredient
   }
 
 
-
-
+  /**
+   * Gets the farmer.
+   * @return the farmer
+   */
   public Farmer getFarmer() {
     return farmer;
   }
 
+  /**
+   * Sets the farmer.
+   * @param farmer the farmer
+   */
   public void setFarmer(Farmer farmer) {
     this.farmer = farmer;
   }
 
+  /**
+   * Prints the date.
+   * @return the string to print
+   */
   public String printDate() {
     Calendar cal = endDate;
     if (cal != null) {
       SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-      //System.out.println(cal.getTime());
-// Ouput "Wed Sep 26 14:23:28 EST 2012"
-
       String formatted = format1.format(cal.getTime());
       return formatted;
-    } else {
+    }
+    else {
       return null;
     }
   }

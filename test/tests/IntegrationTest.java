@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import play.libs.F.Callback;
 import play.test.TestBrowser;
 import tests.pages.AvailableNowPage;

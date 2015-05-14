@@ -56,10 +56,19 @@ public class EditFarmerData {
     this.pictureLocation = pictureLocation;
   }
 
+  /**
+   * Gets the markets.
+   * @return the markets.
+   */
   public List<Market> getMarkets() {
     return markets;
   }
 
+  /**
+   * Sets the markets.
+   *
+   * @param markets the markets
+   */
   public void setMarkets(List<Market> markets) {
     this.markets = markets;
   }
@@ -89,7 +98,7 @@ public class EditFarmerData {
   }
 
   /**
-   * Sets the farmer password
+   * Sets the farmer password.
    * @param password the password
    */
   public void setPassword(String password) {

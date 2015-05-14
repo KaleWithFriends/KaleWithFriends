@@ -1,6 +1,14 @@
-
 import assets.TimeStamp;
-import models.*;
+import models.Farmer;
+import models.FarmerDB;
+import models.Market;
+import models.MarketDB;
+import models.Procedure;
+import models.Recipe;
+import models.RecipeDB;
+import models.Region;
+import models.RegionDB;
+import models.TimedIngredient;
 import play.Application;
 import play.GlobalSettings;
 
@@ -18,96 +26,117 @@ public class Global extends GlobalSettings {
   public void onStart(Application application) {
     super.onStart(application);
 
-    Market mk1 = new Market("Honolulu@Night", "Neal Blaisdell Concert Hall, 777 Ward Ave, Honolulu, HI 96814", "Wednesday 4:00PM - 7:00PM");
-    Market mk2 = new Market("Kapiolani Community College Farmers Market", "4303 Diamond Head Rd, Honolulu, HI 96816", "Saturday 7:30AM - 11:00AM, Tuesday 4:00PM - 7:00PM");
-    Market mk3 = new Market("Farmers Market at Windward Mall", "46-056 Kamehameha Hwy, Kaneohe, HI 96744", "Wednesday 2:30PM - 7:30PM, Sunday 10:00AM - 2:00PM");
-    Market mk4 = new Market("Mililani Farmers Market", "95-1200 Meheula Pkwy, Mililani 96789", "Sunday 8:00AM - 11:00AM");
-    Market mk5 = new Market("King's Village Farmers Market", "131 Kaiulani St, Honolulu, HI 96815", "Monday, Wednesday, Friday, and Saturday 4:00PM - 9:00PM");
-    Market mk6 = new Market("Hyatt Farmers Market", "2424 Kalakaua Ave, Honolulu HI 96815", "Thursday 4:00PM - 8:00PM");
-    Market mk7 = new Market("People's Open Market", "Old Stadium Mall, 2237 S King St, Honolulu 96818", "Wednesday 8:15AM - 9:15AM");
-    Market mk8 = new Market("Manoa Farmers Market", " 2753 Woodlawn Dr, Honolulu 96822", "Tuesday and Sunday 7:00AM - 11:00AM");
-    Market mk9 = new Market("Makiki Farmers Market", "1515 Wilder Ave, Honolulu 96822", "Thursday 4:30PM - 7:30PM");
-    Market mk10 = new Market("Kakaako Farmers Market", "1050 Ala Moana Blvd, Honolulu 96814", "Saturday 8:00AM - 12:00PM");
-    Market mk11 = new Market("Kaiser Farmers Market", "1010 Pensacola Ave, Honolulu 96814", "Thursday 4:30PM - 7:30PM");
-    Market mk12 = new Market("Kekaulike Market", "1039 Kekaulike St, Honolulu, HI 96817", "Monday to Saturday, 9:00AM - 5:00PM");
-    Market mk13 = new Market("Pearlridge Farmers Market", "98-130 Pali Momi St, Aiea, HI 96701", "Saturday 8:00AM - 12:00PM");
-    Market mk14 = new Market("Makeke Kapolei", "Kapolei High School, 91-5007 Kapolei Pkwy, Kapolei 96707", "Thursday 3:00PM - 6:30PM");
-    Market mk15 = new Market("Mahiku Farmers Market", "5105 Iroquois Ave, Ewa Beach 96706", "Wednesday 3:00PM - 7:00PM");
-    Market mk16 = new Market("Waialua People's Market", "67-106 Kealohanui St, Waialua, HI 96791", "Wednesday 4:30PM - 7:00PM, Saturday 8:30PM - 2:00PM");
-    Market mk17 = new Market("Haleiwa Farmers Market", "59-864 Kamehameha Hwy, Haleiwa, 96712", "Thursday 3:00PM - 7:00PM");
-    Market mk18 = new Market("North Shore Country Market", "Sunset Beach Elem, 59-360 Kamehameha Hwy, Haleiwa 96712", "Saturday 8:00AM - 2:00PM");
-    Market mk19 = new Market("BYU Hawaii Farmers Market", " 55-220 Kulanui St., Aloha Center Mall, Room 155/165, Laie 96762", "Every other Friday 10:30AM - 2:00PM");
-    Market mk20 = new Market("Kailua Farmers Market", "609 Kailua Rd, Kailua, HI 96734", "Thursday 5:00PM - 7:30PM");
-    Market mk21 = new Market("Kailua Town Farmers Market", "Kailua Elementary, 315 Kuulei Road, Kailua, HI 96734", "Sunday 8:00AM - 12:00PM");
+    Market mk1 = new Market("Honolulu@Night", "Neal Blaisdell Concert Hall, "
+        + "777 Ward Ave, Honolulu, HI 96814", "Wednesday 4:00PM - 7:00PM");
+    Market mk2 = new Market("Kapiolani Community College Farmers Market",
+        "4303 Diamond Head Rd, Honolulu, HI 96816", "Saturday 7:30AM - 11:00AM, Tuesday 4:00PM - 7:00PM");
+    Market mk3 = new Market("Farmers Market at Windward Mall",
+        "46-056 Kamehameha Hwy, Kaneohe, HI 96744", "Wednesday 2:30PM - 7:30PM, Sunday 10:00AM - 2:00PM");
+    Market mk4 = new Market("Mililani Farmers Market",
+        "95-1200 Meheula Pkwy, Mililani 96789", "Sunday 8:00AM - 11:00AM");
+    Market mk5 = new Market("King's Village Farmers Market",
+        "131 Kaiulani St, Honolulu, HI 96815", "Monday, Wednesday, Friday, and Saturday 4:00PM - 9:00PM");
+    Market mk6 = new Market("Hyatt Farmers Market", "2424 Kalakaua Ave, Honolulu HI 96815",
+        "Thursday 4:00PM - 8:00PM");
+    Market mk7 = new Market("People's Open Market", "Old Stadium Mall, 2237 S King St, Honolulu 96818",
+        "Wednesday 8:15AM - 9:15AM");
+    Market mk8 = new Market("Manoa Farmers Market", " 2753 Woodlawn Dr, Honolulu 96822",
+        "Tuesday and Sunday 7:00AM - 11:00AM");
+    Market mk9 = new Market("Makiki Farmers Market", "1515 Wilder Ave, Honolulu 96822",
+        "Thursday 4:30PM - 7:30PM");
+    Market mk10 = new Market("Kakaako Farmers Market", "1050 Ala Moana Blvd, Honolulu 96814",
+        "Saturday 8:00AM - 12:00PM");
+    Market mk11 = new Market("Kaiser Farmers Market", "1010 Pensacola Ave, Honolulu 96814",
+        "Thursday 4:30PM - 7:30PM");
+    Market mk12 = new Market("Kekaulike Market", "1039 Kekaulike St, Honolulu, HI 96817",
+        "Monday to Saturday, 9:00AM - 5:00PM");
+    Market mk13 = new Market("Pearlridge Farmers Market", "98-130 Pali Momi St, Aiea, HI 96701",
+        "Saturday 8:00AM - 12:00PM");
+    Market mk14 = new Market("Makeke Kapolei", "Kapolei High School, 91-5007 Kapolei Pkwy, Kapolei 96707",
+        "Thursday 3:00PM - 6:30PM");
+    Market mk15 = new Market("Mahiku Farmers Market", "5105 Iroquois Ave, Ewa Beach 96706",
+        "Wednesday 3:00PM - 7:00PM");
+    Market mk16 = new Market("Waialua People's Market", "67-106 Kealohanui St, Waialua, HI 96791",
+        "Wednesday 4:30PM - 7:00PM, Saturday 8:30PM - 2:00PM");
+    Market mk17 = new Market("Haleiwa Farmers Market", "59-864 Kamehameha Hwy, Haleiwa, 96712",
+        "Thursday 3:00PM - 7:00PM");
+    Market mk18 = new Market("North Shore Country Market", "Sunset Beach Elem, 59-360 Kamehameha Hwy, Haleiwa 96712",
+        "Saturday 8:00AM - 2:00PM");
+    Market mk19 = new Market("BYU Hawaii Farmers Market", " 55-220 Kulanui St., "
+        + "Aloha Center Mall, Room 155/165, Laie 96762", "Every other Friday 10:30AM - 2:00PM");
+    Market mk20 = new Market("Kailua Farmers Market", "609 Kailua Rd, Kailua, HI 96734",
+        "Thursday 5:00PM - 7:30PM");
+    Market mk21 = new Market("Kailua Town Farmers Market", "Kailua Elementary, 315 Kuulei Road, Kailua, HI 96734",
+        "Sunday 8:00AM - 12:00PM");
 
-      // Add zip codes around oahu to the database
-      if (RegionDB.getRegions().isEmpty()) {
-          RegionDB.addRegion(new Region("Aiea", "96701","South, Central"));
-          RegionDB.addRegion(new Region("Ewa Beach", "96706","South"));
-          RegionDB.addRegion(new Region("Kapolei", "96707","South"));
-          RegionDB.addRegion(new Region("Kapolei", "96709","South"));
-          RegionDB.addRegion(new Region("Haleiwa", "96712","North"));
-          RegionDB.addRegion(new Region("Hauula", "96717","North"));
-          RegionDB.addRegion(new Region("Kaaawa", "96730","North, East"));
-          RegionDB.addRegion(new Region("Kahuku", "96731","North"));
-          RegionDB.addRegion(new Region("Kailua", "96734","East"));
-          RegionDB.addRegion(new Region("Kaneohe", "96744","East"));
-          RegionDB.addRegion(new Region("Kunia", "96759","West, Central"));
-          RegionDB.addRegion(new Region("Laie", "96762","North"));
-          RegionDB.addRegion(new Region("Pearl City", "96782","South, West, Central"));
-          RegionDB.addRegion(new Region("Wahiawa", "96786","South"));
-          RegionDB.addRegion(new Region("Mililani", "96789","Central"));
-          RegionDB.addRegion(new Region("Waialua", "96791","North"));
-          RegionDB.addRegion(new Region("Waianae", "96792","West"));
-          RegionDB.addRegion(new Region("Waimanalo", "96795","East"));
-          RegionDB.addRegion(new Region("Waipahu", "96797","South, Central"));
-          RegionDB.addRegion(new Region("Honolulu", "96801","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96802","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96803","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96804","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96805","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96806","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96807","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96808","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96809","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96810","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96811","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96812","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96813","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96814","South"));
-          RegionDB.addRegion(new Region("Waikiki", "96815","South"));
-          RegionDB.addRegion(new Region("Waialae / Kahala", "96816","South"));
-          RegionDB.addRegion(new Region("Kapalama", "96817","South"));
-          RegionDB.addRegion(new Region("Kapalama", "96819","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96820","South"));
-          RegionDB.addRegion(new Region("Waialae / Kahala", "96821","South"));
-          RegionDB.addRegion(new Region("Makiki", "96822","South"));
-          RegionDB.addRegion(new Region("Makiki", "96823","South"));
-          RegionDB.addRegion(new Region("Makiki", "96824","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96825","South"));
-          RegionDB.addRegion(new Region("Makiki", "96826","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96836","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96837","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96838","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96839","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96840","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96841","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96843","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96844","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96846","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96847","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96848","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96849","South"));
-          RegionDB.addRegion(new Region("Honolulu", "96850","South"));
-          RegionDB.addRegion(new Region("Hickam AFB", "96853","South, Central"));
-          RegionDB.addRegion(new Region("Wheeler Army Airfield", "96854","Central"));
-          RegionDB.addRegion(new Region("Schofield Barracks", "96857","Central"));
-          RegionDB.addRegion(new Region("Fort Shafter", "96858","South, Central"));
-          RegionDB.addRegion(new Region("Tripler Army Medical Center", "96859","South, Central"));
-          RegionDB.addRegion(new Region("Pearl Harbor", "96860","South, Central"));
-          RegionDB.addRegion(new Region("Camp H M Smith", "96861","South, Central"));
-          RegionDB.addRegion(new Region("M C B H Kaneohe Bay", "96863","East"));
-      }
+    // Add zip codes around oahu to the database
+    if (RegionDB.getRegions().isEmpty()) {
+      RegionDB.addRegion(new Region("Aiea", "96701", "South, Central"));
+      RegionDB.addRegion(new Region("Ewa Beach", "96706", "South"));
+      RegionDB.addRegion(new Region("Kapolei", "96707", "South"));
+      RegionDB.addRegion(new Region("Kapolei", "96709", "South"));
+      RegionDB.addRegion(new Region("Haleiwa", "96712", "North"));
+      RegionDB.addRegion(new Region("Hauula", "96717", "North"));
+      RegionDB.addRegion(new Region("Kaaawa", "96730", "North, East"));
+      RegionDB.addRegion(new Region("Kahuku", "96731", "North"));
+      RegionDB.addRegion(new Region("Kailua", "96734", "East"));
+      RegionDB.addRegion(new Region("Kaneohe", "96744", "East"));
+      RegionDB.addRegion(new Region("Kunia", "96759", "West, Central"));
+      RegionDB.addRegion(new Region("Laie", "96762", "North"));
+      RegionDB.addRegion(new Region("Pearl City", "96782", "South, West, Central"));
+      RegionDB.addRegion(new Region("Wahiawa", "96786", "South"));
+      RegionDB.addRegion(new Region("Mililani", "96789", "Central"));
+      RegionDB.addRegion(new Region("Waialua", "96791", "North"));
+      RegionDB.addRegion(new Region("Waianae", "96792", "West"));
+      RegionDB.addRegion(new Region("Waimanalo", "96795", "East"));
+      RegionDB.addRegion(new Region("Waipahu", "96797", "South, Central"));
+      RegionDB.addRegion(new Region("Honolulu", "96801", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96802", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96803", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96804", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96805", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96806", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96807", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96808", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96809", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96810", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96811", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96812", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96813", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96814", "South"));
+      RegionDB.addRegion(new Region("Waikiki", "96815", "South"));
+      RegionDB.addRegion(new Region("Waialae / Kahala", "96816", "South"));
+      RegionDB.addRegion(new Region("Kapalama", "96817", "South"));
+      RegionDB.addRegion(new Region("Kapalama", "96819", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96820", "South"));
+      RegionDB.addRegion(new Region("Waialae / Kahala", "96821", "South"));
+      RegionDB.addRegion(new Region("Makiki", "96822", "South"));
+      RegionDB.addRegion(new Region("Makiki", "96823", "South"));
+      RegionDB.addRegion(new Region("Makiki", "96824", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96825", "South"));
+      RegionDB.addRegion(new Region("Makiki", "96826", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96836", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96837", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96838", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96839", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96840", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96841", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96843", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96844", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96846", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96847", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96848", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96849", "South"));
+      RegionDB.addRegion(new Region("Honolulu", "96850", "South"));
+      RegionDB.addRegion(new Region("Hickam AFB", "96853", "South, Central"));
+      RegionDB.addRegion(new Region("Wheeler Army Airfield", "96854", "Central"));
+      RegionDB.addRegion(new Region("Schofield Barracks", "96857", "Central"));
+      RegionDB.addRegion(new Region("Fort Shafter", "96858", "South, Central"));
+      RegionDB.addRegion(new Region("Tripler Army Medical Center", "96859", "South, Central"));
+      RegionDB.addRegion(new Region("Pearl Harbor", "96860", "South, Central"));
+      RegionDB.addRegion(new Region("Camp H M Smith", "96861", "South, Central"));
+      RegionDB.addRegion(new Region("M C B H Kaneohe Bay", "96863", "East"));
+    }
 
     // Create a few markets
     if (MarketDB.getMarkets().isEmpty()) {
@@ -192,8 +221,7 @@ public class Global extends GlobalSettings {
 
 
       Farmer farmer = new Farmer("Nalo LIFE", "41-574 Makakalo Street Waimanalo, HI 96795",
-          m,
-          "808-259-7698", "images/farmPicture.jpg", ingredients, "password");
+          m, "808-259-7698", "images/farmPicture.jpg", ingredients, "password");
       FarmerDB.addFarmer(farmer);
 
       m.clear();
@@ -403,7 +431,6 @@ public class Global extends GlobalSettings {
     }
 
 
-
     if (Recipe.find().all().isEmpty()) {
       ArrayList<TimedIngredient> saladIngredients = new ArrayList<TimedIngredient>();
       saladIngredients.add(new TimedIngredient("Baby Kale", 2));
@@ -426,10 +453,12 @@ public class Global extends GlobalSettings {
       List<Procedure> stirFryChoySumProcedure = new ArrayList<Procedure>();
       stirFryChoySumProcedure.add(new Procedure("Heat wok until it smokes."));
       stirFryChoySumProcedure.add(new Procedure("Add oil and heat until it shimmers and is about to start smoking."));
-      stirFryChoySumProcedure.add(new Procedure("Add ginger and garlic, stir fry until very fragrant, about forty seconds"));
+      stirFryChoySumProcedure.add(new Procedure("Add ginger and garlic, stir fry until "
+          + "very fragrant, about forty seconds"));
       stirFryChoySumProcedure.add(new Procedure("Add choy sum, string beans, and eggplant all at once, and stir fry"
           + " very vigorously; water will escape from the greens immediately."));
-      stirFryChoySumProcedure.add(new Procedure("Stir and fry until the leaves are wilted and the stems are just starting to wilt"));
+      stirFryChoySumProcedure.add(new Procedure("Stir and fry until the leaves are wilted and the "
+          + "stems are just starting to wilt"));
       stirFryChoySumProcedure.add(new Procedure("Immediately remove from heat and "
           + "scrape into a heated serving platter and serve right away."));
       Recipe stirFryChoySum = new Recipe("Stir Fry Choy Sum",
@@ -475,7 +504,7 @@ public class Global extends GlobalSettings {
           mintTeaProcedure, "images/mintTea.jpg");
       RecipeDB.addRecipe(mintTea);
 
-      ArrayList<TimedIngredient>blueberryIngredients= new ArrayList<TimedIngredient>();
+      ArrayList<TimedIngredient> blueberryIngredients = new ArrayList<TimedIngredient>();
       blueberryIngredients.add(new TimedIngredient("Blueberry", 2));
       blueberryIngredients.add(new TimedIngredient("Strawberry", 2));
       blueberryIngredients.add(new TimedIngredient("Greek Yogurt", 1));
@@ -492,7 +521,7 @@ public class Global extends GlobalSettings {
       RecipeDB.addRecipe(blueberry);
 
 
-      ArrayList<TimedIngredient>strawIngredients= new ArrayList<TimedIngredient>();
+      ArrayList<TimedIngredient> strawIngredients = new ArrayList<TimedIngredient>();
       strawIngredients.add(new TimedIngredient("Banana", 2));
       strawIngredients.add(new TimedIngredient("Strawberry", 2));
       strawIngredients.add(new TimedIngredient("Greek Yogurt", 1));
@@ -509,7 +538,7 @@ public class Global extends GlobalSettings {
       RecipeDB.addRecipe(straw);
 
 
-      ArrayList<TimedIngredient>pineIngredients= new ArrayList<TimedIngredient>();
+      ArrayList<TimedIngredient> pineIngredients = new ArrayList<TimedIngredient>();
       pineIngredients.add(new TimedIngredient("Blueberry", 2));
       pineIngredients.add(new TimedIngredient("Pineapple", 1));
       pineIngredients.add(new TimedIngredient("Strawberry", 2));
@@ -525,22 +554,6 @@ public class Global extends GlobalSettings {
           "A delicious refreshing blend of local fruit flavors.", pineIngredients,
           pineProcedure, "images/pine.jpg");
       RecipeDB.addRecipe(pine);
-
-      Feed feed = new Feed("We have a new crop of kale! Come see us at our farmers markets before we run out!", FarmerDB.getFarmer("Aloun Farms"));
-
-      Feed feed2 = new Feed("Tomatoes are discounted this week at 50% off!", FarmerDB.getFarmer("Nalo LIFE"));
-
-      Feed feed3 = new Feed("Hope you are all having a great week! Unfortunately we will not make it the Mililani farmers market this week due to personal issues.", FarmerDB.getFarmer("HSN Farms LLC"));
-
-      Feed feed4 = new Feed("Come by and get your fruits! We are running out fast.", FarmerDB.getFarmer("Pit Farms"));
-
-      Feed feed5 = new Feed("We are now out of kale.", FarmerDB.getFarmer("Frankie's Nursery"));
-
-      FeedDB.addProcedure(feed);
-      FeedDB.addProcedure(feed2);
-      FeedDB.addProcedure(feed3);
-      FeedDB.addProcedure(feed4);
-      FeedDB.addProcedure(feed5);
 
     }
 

@@ -202,10 +202,12 @@ public class Application extends Controller {
   /**
    * Returns the available now page.
    *
+   * @param market the market to display
    * @return The resulting available now page.
    */
   public static Result availableNow(String market) {
-    return ok(AvailableNow.render(FarmerDB.getFarmers(), Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx()), MarketDB.getMarkets(), MarketDB.getMarket(market)));
+    return ok(AvailableNow.render(FarmerDB.getFarmers(), Secured.isLoggedIn(ctx()),
+        Secured.getFarmer(ctx()), MarketDB.getMarkets(), MarketDB.getMarket(market)));
   }
 
   /**
@@ -235,7 +237,7 @@ public class Application extends Controller {
    }
 
   /**
-   * Allows user to edit farmer information
+   * Allows user to edit farmer information.
    * @param farmer the farmer to edit
    * @return the new farmer dashboard
    */
@@ -243,7 +245,8 @@ public class Application extends Controller {
     Form<EditFarmerData> formData = Form.form(EditFarmerData.class).bindFromRequest();
     if (formData.hasErrors()) {
       System.out.println("Errors found.");
-      return badRequest(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx()), MarketData.getMarkets()));
+      return badRequest(EditFarmer.render(formData, Secured.isLoggedIn(ctx()),
+          Secured.getFarmer(ctx()), MarketData.getMarkets()));
     }
     EditFarmerData data = formData.get();
     session("username", data.getName());

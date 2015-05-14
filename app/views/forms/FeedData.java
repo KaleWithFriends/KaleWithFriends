@@ -12,9 +12,24 @@ import java.util.List;
  * Created by amytakayesu on 4/6/15.
  */
 public class FeedData {
+  /**
+   * The time.
+   */
   public Calendar time;
+
+  /**
+   * The entry.
+   */
   public String entry;
+
+  /**
+   * The farmer.
+   */
   public Farmer farmer;
+
+  /**
+   * The id of the feed.
+   */
   public long id;
 
   /**
