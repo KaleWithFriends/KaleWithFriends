@@ -4,7 +4,7 @@
     <div class="container">
         <div class="well"><h1><i class="fa fa-leaf"></i> Farmers Markets</h1></div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2">
                 <a href="#stateFilter" class="btn btn-default" data-toggle="collapse">Filter by Region</a>
                 <div id="stateFilter" class="collapse">
                     <table class="table table_striped">
@@ -12,25 +12,21 @@
                     </table>
                 </div>
             </div>
-        </div>
+            </div>
         <br>
-        <div class="well">
-            <ul class="list-group">
-            @for(market <- marketList) {
-                <div class="row">
-                    <div class="col-sm-12">
-                        <li class="list-group-item"><h4><a href="#@market.getMarketName">@market.getMarketName</a></h4>
-                            <ul><li><h6><a href="https://www.google.com/maps/place/@market.getLocation">@market.getLocation</a></h6></li></ul>
-                        </li>
-                    </div>
+            <div class="row">@for(market <- marketList) {
+                <div class="col-md-4">
+                    <div class="well" style="height:200px;">
+                        <h4><a href="#@market.getMarketName">@market.getMarketName</a></h4>
+                            <h4><a href="https://www.google.com/maps/place/@market.getLocation">@market.getLocation</a></h4>
+                        <h4>@market.getTime()</h4>
                 </div>
-            }
-            </ul>
-        </div>
+                    </div>
+            }</div>
 
         @for(market <- marketList) {
             <div class="row">
-            <h3><a name="@market.getMarketName"></a>@market.getMarketName</h3>
+            <h3><a name="@market.getMarketName"></a><i class="fa fa-leaf"></i> @market.getMarketName</h3>
             @for(farmer <- market.getFarmers) {
                 <div class="col-sm-4">
                     <div class="well produce_image" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(@routes.Assets.at(farmer.getPictureLocation()));">

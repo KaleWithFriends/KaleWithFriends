@@ -18,19 +18,20 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="@routes.Application.availableNow(market.getMarketName)">@market.getMarketName</a></li>
       }
       </ul>
-    </div></div>
+    </div></div></div><br>
 
-      @for(f <- currentMarket.getFarmers()) {
+    <div class="row">
+        @for(f <- currentMarket.getFarmers()) {
           <div class="col-md-5">
           <div class="well"><h4 style="padding-right:60px"><a href="#@f.getName">@f.getName</a></h4>
-              <ul><li><h5 style="padding-right:60px"><a href="https://www.google.com/maps/place/@f.getLocation">@f.getLocation</a></h5></li></ul></div>
+              <ul><li><h5 style="padding-right:60px"><a href="https://www.google.com/maps/place/@f.getLocation">@f.getLocation</a></h5></li></ul>
+          </div>
               </div>
-              }
-    </div>
+              }</div>
 
 
     @for(farmer <- currentMarket.getFarmers()) {
-      <h3><a name="@farmer.getName">@farmer.getName()</a></h3><br>
+      <h3><a name="@farmer.getName"><i class="fa fa-leaf"></i> @farmer.getName()</a></h3><br>
       @for(ingredient <- farmer.getFreshIngredientList()) {
 
           <div class="col-md-3">
