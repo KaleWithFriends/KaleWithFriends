@@ -28,9 +28,10 @@
             <div class="row">
             <h3><a name="@market.getMarketName"></a><i class="fa fa-leaf"></i> @market.getMarketName</h3>
             @for(farmer <- market.getFarmers) {
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="well produce_image" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(@routes.Assets.at(farmer.getPictureLocation()));">
-                        <a href="@routes.Application.farmersProfile(farmer.getName)">@farmer.getName()</a>
+                        <br>
+                        <h4 style="text-align: center;"><a href="@routes.Application.farmersProfile(farmer.getName)">@farmer.getName()</a></h4>
                     </div>
                 </div>
             }
