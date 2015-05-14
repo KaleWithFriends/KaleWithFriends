@@ -43,6 +43,14 @@ create table recipe (
   constraint pk_recipe primary key (id))
 ;
 
+create table region (
+  id                        bigint not null,
+  area_name                 varchar(255),
+  zip_code                  varchar(255),
+  regions                   varchar(255),
+  constraint pk_region primary key (id))
+;
+
 create table timed_ingredient (
   id                        bigint not null,
   start_date                timestamp,
@@ -71,6 +79,8 @@ create sequence market_seq;
 create sequence procedure_seq;
 
 create sequence recipe_seq;
+
+create sequence region_seq;
 
 create sequence timed_ingredient_seq;
 
@@ -103,6 +113,8 @@ drop table if exists procedure cascade;
 
 drop table if exists recipe cascade;
 
+drop table if exists region cascade;
+
 drop table if exists timed_ingredient cascade;
 
 drop sequence if exists farmer_seq;
@@ -114,6 +126,8 @@ drop sequence if exists market_seq;
 drop sequence if exists procedure_seq;
 
 drop sequence if exists recipe_seq;
+
+drop sequence if exists region_seq;
 
 drop sequence if exists timed_ingredient_seq;
 

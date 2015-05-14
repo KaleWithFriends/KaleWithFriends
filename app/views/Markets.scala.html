@@ -1,25 +1,6 @@
 @(message: String, marketList: List[Market], isLoggedIn: Boolean, farmer: Farmer)
 
 @Main("Welcome to markets.", isLoggedIn, farmer) {
-    <script type="text/javascript">
-    jQuery(function ($) {
-    $('.panel-heading span.clickable').on("click", function (e) {
-    if ($(this).hasClass('panel-collapsed')) {
-    // expand the panel
-    $(this).parents('.panel').find('.panel-body').slideDown();
-    $(this).removeClass('panel-collapsed');
-    $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-    }
-    else {
-    // collapse the panel
-    $(this).parents('.panel').find('.panel-body').slideUp();
-    $(this).addClass('panel-collapsed');
-    $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-    }
-    });
-    });
-    </script>
-
     <div class="container">
         <div class="well"><h1>Farmers Markets</h1></div>
         <div class="row">
@@ -27,16 +8,7 @@
                 <a href="#stateFilter" class="btn btn-default" data-toggle="collapse">Filter by State</a>
                 <div id="stateFilter" class="collapse">
                     <table class="table table_striped">
-                        <tr><td><a href="@routes.Application.farmersMarkets("AL")">Alabama</a></td><td><a href="@routes.Application.farmersMarkets("HI")">Hawaii</a></td><td><a href="@routes.Application.farmersMarkets("MA")">Massachusetts</a></td><td><a href="@routes.Application.farmersMarkets("NM")">New Mexico</a></td><td><a href="@routes.Application.farmersMarkets("SD")">South Dakota</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("AK")">Alaska</a></td><td><a href="@routes.Application.farmersMarkets("ID")">Idaho</a></td><td><a href="@routes.Application.farmersMarkets("MI")">Michigan</a></td><td><a href="@routes.Application.farmersMarkets("NY")">New York</a></td><td><a href="@routes.Application.farmersMarkets("TN")">Tennessee</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("AZ")">Arizona</a></td><td><a href="@routes.Application.farmersMarkets("IL")">Illinois</a></td><td><a href="@routes.Application.farmersMarkets("MN")">Minnesota</a></td><td><a href="@routes.Application.farmersMarkets("NC")">North Carolina</a></td><td><a href="@routes.Application.farmersMarkets("TX")">Texas</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("AR")">Arkansas</a></td><td><a href="@routes.Application.farmersMarkets("IN")">Indiana</a></td><td><a href="@routes.Application.farmersMarkets("MS")">Mississippi</a></td><td><a href="@routes.Application.farmersMarkets("ND")">North Dakota</a></td><td><a href="@routes.Application.farmersMarkets("UT")">Utah</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("CA")">California</a></td><td><a href="@routes.Application.farmersMarkets("IA")">Iowa</a></td><td><a href="@routes.Application.farmersMarkets("MO")">Missouri</a></td><td><a href="@routes.Application.farmersMarkets("OH")">Ohio</a></td><td><a href="@routes.Application.farmersMarkets("VT")">Vermont</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("CO")">Colorado</a></td><td><a href="@routes.Application.farmersMarkets("KS")">Kansas</a></td><td><a href="@routes.Application.farmersMarkets("MT")">Montana</a></td><td><a href="@routes.Application.farmersMarkets("OK")">Oklahoma</a></td><td><a href="@routes.Application.farmersMarkets("VA")">Virginia</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("CT")">Connecticut</a></td><td><a href="@routes.Application.farmersMarkets("KY")">Kentucky</a></td><td><a href="@routes.Application.farmersMarkets("NE")">Nebraska</a></td><td><a href="@routes.Application.farmersMarkets("OR")">Oregon</a></td><td><a href="@routes.Application.farmersMarkets("WA")">Washington</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("DE")">Delaware</a></td><td><a href="@routes.Application.farmersMarkets("LA")">Louisiana</a></td><td><a href="@routes.Application.farmersMarkets("NV")">Nevada</a></td><td><a href="@routes.Application.farmersMarkets("PA")">Pennsylvania</a></td><td><a href="@routes.Application.farmersMarkets("WV")">West Virginia</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("FL")">Florida</a></td><td><a href="@routes.Application.farmersMarkets("ME")">Maine</a></td><td><a href="@routes.Application.farmersMarkets("NH")">New Hampshire</a></td><td><a href="@routes.Application.farmersMarkets("RI")">Rhode Island</a></td><td><a href="@routes.Application.farmersMarkets("WI")">Wisconsin</a></td></tr>
-                        <tr><td><a href="@routes.Application.farmersMarkets("GA")">Georgia</a></td><td><a href="@routes.Application.farmersMarkets("MD")">Maryland</a></td><td><a href="@routes.Application.farmersMarkets("NJ")">New Jersey</a></td><td><a href="@routes.Application.farmersMarkets("SC")">South Carolina</a></td><td><a href="@routes.Application.farmersMarkets("WY")">Wyoming</a></td></tr>
+                        <tr><td><a href="@routes.Application.farmersMarkets()">All</a></td><td><a href="@routes.Application.farmersMarkets("North")">North</a></td><td><a href="@routes.Application.farmersMarkets("South")">South</a></td><td><a href="@routes.Application.farmersMarkets("East")">East</a></td><td><a href="@routes.Application.farmersMarkets("West")">West</a></td></tr>
                     </table>
                 </div>
             </div>
