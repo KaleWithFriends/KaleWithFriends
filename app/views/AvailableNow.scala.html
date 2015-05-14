@@ -30,7 +30,7 @@
 
 
     @for(farmer <- currentMarket.getFarmers()) {
-      <h3><a name="@farmer.getName">@farmer.getName()</a></h3><br>
+      <div class="row"><div class="col-sm-12"><h3><a name="@farmer.getName">@farmer.getName()</a></h3></div></div>
       @for(ingredient <- farmer.getFreshIngredientList()) {
 
           <div class="col-md-3">
