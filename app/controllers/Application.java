@@ -173,13 +173,13 @@ public class Application extends Controller {
 
   /**
    * Returns the farmersMarket page.
-   *
+   * @param region The area of oahu to view markets for.
    * @return The resulting local page.
    */
-  public static Result farmersMarkets(String state) {
+  public static Result farmersMarkets(String region) {
     List<Market> markets;
-    if (state != "") {
-          markets = MarketDB.getMarketsByState(state);
+    if (region != "") {
+          markets = MarketDB.getMarketsByRegion(region);
       }
     else {
       markets = MarketDB.getMarkets();

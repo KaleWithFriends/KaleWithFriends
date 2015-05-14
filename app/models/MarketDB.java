@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +45,33 @@ public class MarketDB {
     return Market.find().all();
   }
 
-  public static List<Market> getMarketsByState(String state) {
-    return Market.find().where().contains("location", state).findList();
-  }
+    /**
+    * Get a list of markets given a specific state.
+    * @param state The state.
+    * @return The list of markets in that state.
+    */
+    public static List<Market> getMarketsByState(String state) {
+        return Market.find().where().contains("location", state).findList();
+    }
+
+    /**
+     * Returns a list of markets given a region of Oahu. All markets if region is empty.
+     * @param region
+     * @return The markets in the region.
+     */
+    public static List<Market> getMarketsByRegion(String region) {
+        if (region.isEmpty()) { return getMarkets(); }
+
+        // Get a list of regions
+        List<String> zipCodes = RegionDB.getZipCodesFromRegion(region);
+
+        List<Market> markets = new ArrayList<>();
+
+        for (String s : zipCodes) {
+            markets.addAll(Market.find().where().contains("location", s).findList());
+        }
+
+        return markets;
+    }
+
 }

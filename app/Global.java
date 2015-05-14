@@ -1,13 +1,6 @@
 
 import assets.TimeStamp;
-import models.Farmer;
-import models.FarmerDB;
-import models.Market;
-import models.MarketDB;
-import models.Procedure;
-import models.Recipe;
-import models.RecipeDB;
-import models.TimedIngredient;
+import models.*;
 import play.Application;
 import play.GlobalSettings;
 
@@ -46,6 +39,75 @@ public class Global extends GlobalSettings {
     Market mk19 = new Market("BYU Hawaii Farmers Market", " 55-220 Kulanui St., Aloha Center Mall, Room 155/165, Laie 96762", "Every other Friday 10:30AM - 2:00PM");
     Market mk20 = new Market("Kailua Farmers Market", "609 Kailua Rd, Kailua, HI 96734", "Thursday 5:00PM - 7:30PM");
     Market mk21 = new Market("Kailua Town Farmers Market", "Kailua Elementary, 315 Kuulei Road, Kailua, HI 96734", "Sunday 8:00AM - 12:00PM");
+
+      // Add zip codes around oahu to the database
+      if (RegionDB.getRegions().isEmpty()) {
+          RegionDB.addRegion(new Region("Aiea", "96701","South, Central"));
+          RegionDB.addRegion(new Region("Ewa Beach", "96706","South"));
+          RegionDB.addRegion(new Region("Kapolei", "96707","South"));
+          RegionDB.addRegion(new Region("Kapolei", "96709","South"));
+          RegionDB.addRegion(new Region("Haleiwa", "96712","North"));
+          RegionDB.addRegion(new Region("Hauula", "96717","North"));
+          RegionDB.addRegion(new Region("Kaaawa", "96730","North, East"));
+          RegionDB.addRegion(new Region("Kahuku", "96731","North"));
+          RegionDB.addRegion(new Region("Kailua", "96734","East"));
+          RegionDB.addRegion(new Region("Kaneohe", "96744","East"));
+          RegionDB.addRegion(new Region("Kunia", "96759","West, Central"));
+          RegionDB.addRegion(new Region("Laie", "96762","North"));
+          RegionDB.addRegion(new Region("Pearl City", "96782","South, West, Central"));
+          RegionDB.addRegion(new Region("Wahiawa", "96786","South"));
+          RegionDB.addRegion(new Region("Mililani", "96789","Central"));
+          RegionDB.addRegion(new Region("Waialua", "96791","North"));
+          RegionDB.addRegion(new Region("Waianae", "96792","West"));
+          RegionDB.addRegion(new Region("Waimanalo", "96795","East"));
+          RegionDB.addRegion(new Region("Waipahu", "96797","South, Central"));
+          RegionDB.addRegion(new Region("Honolulu", "96801","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96802","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96803","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96804","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96805","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96806","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96807","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96808","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96809","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96810","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96811","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96812","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96813","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96814","South"));
+          RegionDB.addRegion(new Region("Waikiki", "96815","South"));
+          RegionDB.addRegion(new Region("Waialae / Kahala", "96816","South"));
+          RegionDB.addRegion(new Region("Kapalama", "96817","South"));
+          RegionDB.addRegion(new Region("Kapalama", "96819","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96820","South"));
+          RegionDB.addRegion(new Region("Waialae / Kahala", "96821","South"));
+          RegionDB.addRegion(new Region("Makiki", "96822","South"));
+          RegionDB.addRegion(new Region("Makiki", "96823","South"));
+          RegionDB.addRegion(new Region("Makiki", "96824","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96825","South"));
+          RegionDB.addRegion(new Region("Makiki", "96826","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96836","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96837","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96838","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96839","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96840","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96841","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96843","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96844","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96846","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96847","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96848","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96849","South"));
+          RegionDB.addRegion(new Region("Honolulu", "96850","South"));
+          RegionDB.addRegion(new Region("Hickam AFB", "96853","South, Central"));
+          RegionDB.addRegion(new Region("Wheeler Army Airfield", "96854","Central"));
+          RegionDB.addRegion(new Region("Schofield Barracks", "96857","Central"));
+          RegionDB.addRegion(new Region("Fort Shafter", "96858","South, Central"));
+          RegionDB.addRegion(new Region("Tripler Army Medical Center", "96859","South, Central"));
+          RegionDB.addRegion(new Region("Pearl Harbor", "96860","South, Central"));
+          RegionDB.addRegion(new Region("Camp H M Smith", "96861","South, Central"));
+          RegionDB.addRegion(new Region("M C B H Kaneohe Bay", "96863","East"));
+      }
 
     // Create a few markets
     if (MarketDB.getMarkets().isEmpty()) {
