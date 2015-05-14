@@ -115,6 +115,24 @@ public class Global extends GlobalSettings {
       MarketDB.addMarket(mk1);
       MarketDB.addMarket(mk2);
       MarketDB.addMarket(mk3);
+      MarketDB.addMarket(mk4);
+      MarketDB.addMarket(mk5);
+      MarketDB.addMarket(mk6);
+      MarketDB.addMarket(mk7);
+      MarketDB.addMarket(mk8);
+      MarketDB.addMarket(mk9);
+      MarketDB.addMarket(mk10);
+      MarketDB.addMarket(mk11);
+      MarketDB.addMarket(mk12);
+      MarketDB.addMarket(mk13);
+      MarketDB.addMarket(mk14);
+      MarketDB.addMarket(mk15);
+      MarketDB.addMarket(mk16);
+      MarketDB.addMarket(mk17);
+      MarketDB.addMarket(mk18);
+      MarketDB.addMarket(mk19);
+      MarketDB.addMarket(mk20);
+      MarketDB.addMarket(mk21);
     }
 
     if (TimedIngredient.find().all().isEmpty()) {
