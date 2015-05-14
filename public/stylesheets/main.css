@@ -21,6 +21,18 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}
+
 /* all map containers must be full height */
 html, body, .container-fluid, .row, .map {
   height: 100%
@@ -36,6 +48,9 @@ html, body, .container-fluid, .row, .map {
   width: 60%;
 }
 
+.li {
+  list-style-type: none;
+}
 
 .farmer_image {
   width: 600px;
@@ -60,7 +75,7 @@ html, body, .container-fluid, .row, .map {
 }
 
 .produce_image {
-  height: 100px;
+  height: 220px;
   display: block;
   padding-right: 25px;
 }
@@ -236,4 +251,7 @@ html, body, .container-fluid, .row, .map {
 .stateFilter {
     padding-bottom: 100px;
     font-size: 15px;
+}
+
+.oneFarmer {
 }

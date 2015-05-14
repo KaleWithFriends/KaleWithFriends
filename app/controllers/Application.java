@@ -194,7 +194,8 @@ public class Application extends Controller {
    * @return The resulting Meal Planner page.
    */
   public static Result mealPlanner() {
-    return ok(MealPlanner.render("Welcome to Meal Planner.", RecipeDB.getFreshRecipeList(), Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx())));
+    return ok(MealPlanner.render("Welcome to Meal Planner.", RecipeDB.getFreshRecipeList(),
+        Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx())));
   }
 
 
@@ -220,6 +221,11 @@ public class Application extends Controller {
     return redirect(routes.Application.farmersDashboard());
   }
 
+  /**
+   * Allows user to edit farmer information.
+   * @param farmer the farmer to edit
+   * @return the new farmer edit form
+   */
   public static Result editFarmer(String farmer) {
     Farmer f = Farmer.findFarmer(farmer);
     EditFarmerData data = new EditFarmerData(f);
@@ -228,6 +234,11 @@ public class Application extends Controller {
     return ok(EditFarmer.render(formData, Secured.isLoggedIn(ctx()), Secured.getFarmer(ctx()), dietTypeMap));
    }
 
+  /**
+   * Allows user to edit farmer information
+   * @param farmer the farmer to edit
+   * @return the new farmer dashboard
+   */
   public static Result postEditFarmer(String farmer) {
     Form<EditFarmerData> formData = Form.form(EditFarmerData.class).bindFromRequest();
     if (formData.hasErrors()) {
@@ -305,6 +316,7 @@ public class Application extends Controller {
   /**
    *  Retrieves the new ingredient page for a user to edit ingredient.
    * @param farmer the current farmer name.
+   * @param ingredient the ingredient to edit.
    * @return edit ingredient page.
    */
   @Security.Authenticated(Secured.class)

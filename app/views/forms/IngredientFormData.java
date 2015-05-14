@@ -1,6 +1,5 @@
 package views.forms;
 
-import assets.TimeStamp;
 import models.Farmer;
 import models.TimedIngredient;
 import play.data.validation.ValidationError;

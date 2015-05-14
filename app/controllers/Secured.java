@@ -2,9 +2,9 @@ package controllers;
 
 import models.Farmer;
 import models.FarmerDB;
+import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
-import play.mvc.Http.Context;
 
 /**
  * Implement authorization for this system.

@@ -24,18 +24,34 @@ public class EditFarmerData {
   @Id
   private long id;
 
+  /**
+   * Gets the farmer location.
+   * @return the location
+   */
   public String getLocation() {
     return location;
   }
 
+  /**
+   * Sets the farmer location.
+   * @param location farmer location
+   */
   public void setLocation(String location) {
     this.location = location;
   }
 
+  /**
+   * Gets the farmer picture location.
+   * @return the picture location
+   */
   public String getPictureLocation() {
     return pictureLocation;
   }
 
+  /**
+   * Sets the farmer picture location.
+   * @param pictureLocation farmer picture location
+   */
   public void setPictureLocation(String pictureLocation) {
     this.pictureLocation = pictureLocation;
   }
@@ -48,34 +64,66 @@ public class EditFarmerData {
     this.markets = markets;
   }
 
+  /**
+   * Gets the farmer phone number.
+   * @return the phone number
+   */
   public String getPhone() {
     return phone;
   }
 
+  /**
+   * Sets the farmer phone number.
+   * @param phone the phone number
+   */
   public void setPhone(String phone) {
     this.phone = phone;
   }
 
+  /**
+   * Gets the farmer password.
+   * @return the password
+   */
   public String getPassword() {
     return password;
   }
 
+  /**
+   * Sets the farmer password
+   * @param password the password
+   */
   public void setPassword(String password) {
     this.password = password;
   }
 
+  /**
+   * Gets the farmer name.
+   * @return the farmer name
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Sets the farmer name.
+   * @param name the farmer name
+   */
   public void setName(String name) {
     this.name = name;
   }
 
+  /**
+   * Gets the farmer id.
+   * @return the id.
+   */
   public long getId() {
     return id;
   }
 
+  /**
+   * Sets the farmer id.
+   * @param id the farmer id.
+   */
   public void setId(long id) {
     this.id = id;
   }

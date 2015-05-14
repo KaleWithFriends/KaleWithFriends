@@ -41,6 +41,7 @@ public class Farmer extends Model {
 
   @ManyToMany
   private List<Market> markets;
+
   /**
    * The EBean ORM finder method for database queries.
    *
@@ -138,42 +139,47 @@ public class Farmer extends Model {
    * @param location        The location of the farmer.
    * @param pictureLocation The location of the picture.
    * @param ingredientList  The list of current farmer stock.
+   *                        <<<<<<< Updated upstream
    * @param password        The password for the farmer.
    */
   public Farmer(String name, String location,
-                List<Market> markets, String phone, String pictureLocation, ArrayList<TimedIngredient> ingredientList, String password) {
-    this.id = id;
-    this.name = name;
-    this.location = location;
-    this.markets = markets;
-    this.phone = phone;
-    this.ingredientList = ingredientList;
-    this.pictureLocation = pictureLocation;
-    this.password = password;
-  }
+                List<Market> markets, String phone, String pictureLocation,
+                ArrayList<TimedIngredient> ingredientList, String password) {
+      this.id = id;
+      this.name = name;
+      this.location = location;
+      this.markets = markets;
+      this.phone = phone;
+      this.ingredientList = ingredientList;
+      this.pictureLocation = pictureLocation;
+      this.password = password;
+    }
+
 
     /**
-     * Get the password.
-     * @return The password.
+     * Gets Farmer password.
+     * @return the password
      */
-  public String getPassword() {
-    return password;
-  }
+    public String getPassword () {
+      return password;
+    }
+
 
     /**
-     * Set the password.
-     * @param password The password.
+     * Sets the user password.
+     * @param password the password
      */
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public void setPassword (String password){
+      this.password = password;
+    }
 
 
-  /**
-   * Gets the name of the farmer.
-   *
-   * @return The name.
-   */
+    /**
+     * Gets the name of the farmer.
+     *
+     * @return The name.
+     */
+
   public String getName() {
     return name;
   }
@@ -319,6 +325,7 @@ public class Farmer extends Model {
 
   /**
    * Adds a market to the farmer's list of markets.
+   *
    * @param market The market to add.
    */
   public void addMarket(Market market) {
@@ -328,6 +335,7 @@ public class Farmer extends Model {
 
   /**
    * Remove a single market from the farmer's list.
+   *
    * @param market The market to remove.
    */
   public void removeMarket(Market market) {
@@ -402,10 +410,11 @@ public class Farmer extends Model {
 
   /**
    * Adds a new ingredient to the farmer given a ingredient form data.
+   *
    * @param formData The form data.
    */
-  public void addIngredient(IngredientFormData formData){
-    TimedIngredient timedIngredient = new TimedIngredient( formData.name, Integer.parseInt(formData.quantity));
+  public void addIngredient(IngredientFormData formData) {
+    TimedIngredient timedIngredient = new TimedIngredient(formData.name, Integer.parseInt(formData.quantity));
     timedIngredient.setPrice(formData.price);
     timedIngredient.setImage("images/farmPicture.jpg");
     timedIngredient.setEndDate(formData.endDate);
@@ -479,3 +488,4 @@ public class Farmer extends Model {
     this.feedList = feedList;
   }
 }
+
