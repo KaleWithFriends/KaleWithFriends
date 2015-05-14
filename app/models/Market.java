@@ -25,14 +25,18 @@ public class Market extends play.db.ebean.Model {
   /** The location of the market. */
   private String location;
 
+  /** The time of the market. */
+  private String time;
+
   /**
    * Default constructor.
    *
    * @param marketName Name of the market.
    */
-  public Market(String marketName, String location) {
+  public Market(String marketName, String location, String time) {
     this.marketName = marketName;
     this.location = location;
+    this.time = time;
   }
 
   /**
@@ -104,6 +108,24 @@ public class Market extends play.db.ebean.Model {
    */
   public List<Farmer> getFarmers() {
     return farmers;
+  }
+
+  /**
+   * Get the time.
+   *
+   * @return the market time.
+   */
+  public String getTime() {
+    return time;
+  }
+
+  /**
+   * Set the time.
+   *
+   * @param time the market time.
+   */
+  public void setTime(String time) {
+    this.time = time;
   }
 
   /**

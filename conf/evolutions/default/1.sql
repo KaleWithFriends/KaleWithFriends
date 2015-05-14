@@ -25,6 +25,7 @@ create table market (
   id                        bigint not null,
   market_name               varchar(255),
   location                  varchar(255),
+  time                      varchar(255),
   constraint pk_market primary key (id))
 ;
 

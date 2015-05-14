@@ -25,9 +25,27 @@ public class Global extends GlobalSettings {
   public void onStart(Application application) {
     super.onStart(application);
 
-    Market mk1 = new Market("Honolulu@Night", "Neal Blaisdell Concert Hall, 777 Ward Ave, Honolulu, HI 96814");
-    Market mk2 = new Market("Kapiolani Community College Farmers Market", "Mililani High School, 95-1200 Meheula Pkwy, Mililani, HI 96789");
-    Market mk3 = new Market("Farmers Market at Windward Mall", "46-056 Kamehameha Hwy, Kaneohe, HI 96744");
+    Market mk1 = new Market("Honolulu@Night", "Neal Blaisdell Concert Hall, 777 Ward Ave, Honolulu, HI 96814", "Wednesday 4:00PM - 7:00PM");
+    Market mk2 = new Market("Kapiolani Community College Farmers Market", "4303 Diamond Head Rd, Honolulu, HI 96816", "Saturday 7:30AM - 11:00AM, Tuesday 4:00PM - 7:00PM");
+    Market mk3 = new Market("Farmers Market at Windward Mall", "46-056 Kamehameha Hwy, Kaneohe, HI 96744", "Wednesday 2:30PM - 7:30PM, Sunday 10:00AM - 2:00PM");
+    Market mk4 = new Market("Mililani Farmers Market", "95-1200 Meheula Pkwy, Mililani 96789", "Sunday 8:00AM - 11:00AM");
+    Market mk5 = new Market("King's Village Farmers Market", "131 Kaiulani St, Honolulu, HI 96815", "Monday, Wednesday, Friday, and Saturday 4:00PM - 9:00PM");
+    Market mk6 = new Market("Hyatt Farmers Market", "2424 Kalakaua Ave, Honolulu HI 96815", "Thursday 4:00PM - 8:00PM");
+    Market mk7 = new Market("People's Open Market", "Old Stadium Mall, 2237 S King St, Honolulu 96818", "Wednesday 8:15AM - 9:15AM");
+    Market mk8 = new Market("Manoa Farmers Market", " 2753 Woodlawn Dr, Honolulu 96822", "Tuesday and Sunday 7:00AM - 11:00AM");
+    Market mk9 = new Market("Makiki Farmers Market", "1515 Wilder Ave, Honolulu 96822", "Thursday 4:30PM - 7:30PM");
+    Market mk10 = new Market("Kakaako Farmers Market", "1050 Ala Moana Blvd, Honolulu 96814", "Saturday 8:00AM - 12:00PM");
+    Market mk11 = new Market("Kaiser Farmers Market", "1010 Pensacola Ave, Honolulu 96814", "Thursday 4:30PM - 7:30PM");
+    Market mk12 = new Market("Kekaulike Market", "1039 Kekaulike St, Honolulu, HI 96817", "Monday to Saturday, 9:00AM - 5:00PM");
+    Market mk13 = new Market("Pearlridge Farmers Market", "98-130 Pali Momi St, Aiea, HI 96701", "Saturday 8:00AM - 12:00PM");
+    Market mk14 = new Market("Makeke Kapolei", "Kapolei High School, 91-5007 Kapolei Pkwy, Kapolei 96707", "Thursday 3:00PM - 6:30PM");
+    Market mk15 = new Market("Mahiku Farmers Market", "5105 Iroquois Ave, Ewa Beach 96706", "Wednesday 3:00PM - 7:00PM");
+    Market mk16 = new Market("Waialua People's Market", "67-106 Kealohanui St, Waialua, HI 96791", "Wednesday 4:30PM - 7:00PM, Saturday 8:30PM - 2:00PM");
+    Market mk17 = new Market("Haleiwa Farmers Market", "59-864 Kamehameha Hwy, Haleiwa, 96712", "Thursday 3:00PM - 7:00PM");
+    Market mk18 = new Market("North Shore Country Market", "Sunset Beach Elem, 59-360 Kamehameha Hwy, Haleiwa 96712", "Saturday 8:00AM - 2:00PM");
+    Market mk19 = new Market("BYU Hawaii Farmers Market", " 55-220 Kulanui St., Aloha Center Mall, Room 155/165, Laie 96762", "Every other Friday 10:30AM - 2:00PM");
+    Market mk20 = new Market("Kailua Farmers Market", "609 Kailua Rd, Kailua, HI 96734", "Thursday 5:00PM - 7:30PM");
+    Market mk21 = new Market("Kailua Town Farmers Market", "Kailua Elementary, 315 Kuulei Road, Kailua, HI 96734", "Sunday 8:00AM - 12:00PM");
 
     // Create a few markets
     if (MarketDB.getMarkets().isEmpty()) {
